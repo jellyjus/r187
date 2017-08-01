@@ -1,0 +1,10 @@
+{
+  "name": "r187",
+  "version": "1.0.0",
+  "description": "r187 emu",
+  "main": "index.html",
+  "author": "",
+  "devDependencies": {
+    "nw-builder": "^3.4.1"
+  }
+}
