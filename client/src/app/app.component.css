@@ -14,6 +14,27 @@
   background-size: contain;
 }
 
+.grid-buttons {
+  margin-left: -20%;
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+
+.grid-buttons button {
+  width: 30%;
+  padding: 3px 3px;
+  margin-bottom: 10px;
+}
+
+.grid-buttons button:nth-child(n+7) {
+  margin-bottom: 3px;
+}
+
 @media (min-width: 768px) {
   .display {
     width: 57%;
