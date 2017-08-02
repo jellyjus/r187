@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 
 import { StateService } from './services/state.service';
 import { DisplayComponent } from './components/display/display.component';
-import { FooterButtonsComponent } from './components/footer-buttons/footer-buttons.component';
-import { StartScreenComponent } from './components/start-screen/start-screen.component'
+import { FooterButtonsComponent } from './components/display/footer-buttons/footer-buttons.component';
+import { StartScreenComponent } from './components/display/start-screen/start-screen.component'
 
 @NgModule({
   declarations: [

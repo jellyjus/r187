@@ -7,6 +7,10 @@ export class StateService {
   constructor() { }
 
   public button = new Subject<any>();
+  public footerButtons = {
+    left: null,
+    right: null
+  };
 
   button_push(button) {
     this.button.next({button});

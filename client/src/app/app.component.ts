@@ -15,7 +15,10 @@ export class AppComponent implements OnInit{
   public subscription;
 
   ngOnInit() {
-    this.subscription = this.stateService.buttons.subscribe(data => console.log(data));
+    this.subscription = this.stateService.buttons.subscribe(data => {
+      console.log(data);
+      this.stateService.footerButtons.left = 'qweqwe';
+    });
   }
 
   button_push(button) {
