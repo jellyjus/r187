@@ -17,11 +17,14 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "",
       "styles": [
+        "assets/bootstrap/css/bootstrap.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/bootstrap/js/bootstrap.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

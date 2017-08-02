@@ -1,0 +1,12 @@
+.display {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-screen {
+  flex: 1;
+}
+
+.footer {
+  justify-self: flex-end;
+}

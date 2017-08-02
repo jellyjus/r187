@@ -1,0 +1,46 @@
+.left-side {
+  background: url("../assets/images/left-side.png") no-repeat center;
+  background-size: contain;
+}
+
+.front-side {
+  position: relative;
+  background: url("../assets/images/front-side.png") no-repeat center;
+  background-size: contain;
+}
+
+.right-side {
+  background: url("../assets/images/right-side.png") no-repeat center;
+  background-size: contain;
+}
+
+@media (min-width: 768px) {
+  .display {
+    width: 57%;
+    height: 27.5%;
+    top: 20.1%;
+    left: 6.4%;
+  }
+}
+
+@media (min-width: 992px) {
+  .display {
+    width: 47%;
+    height: 27.5%;
+    top: 20.1%;
+    left: 10.5%;
+  }
+}
+.display {
+  position: absolute;
+  background-color: rebeccapurple;
+  border-radius: 7px;
+}
+
+.button {
+  background: blue;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
