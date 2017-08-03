@@ -1,3 +1,9 @@
 .side {
   height: 100vh;
 }
+
+ul, div, h2 {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

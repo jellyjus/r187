@@ -1,3 +1,8 @@
-<div class="row">
-  sdfdfsdf
+<div class="menu-screen row">
+  <div class="toolbar col-xs-12">
+    <toolbar></toolbar>
+  </div>
+  <ul class="main-menu col-xs-12">
+    <li *ngFor="let item of items; let i = index" class="menu-item" (click)="menuClick(i)" [ngClass]="{'main-menu--active':i == curIndex}"><i class="fa" ngClass={{item.icon}}></i><a href="#">{{item.name}}</a></li>
+  </ul>
 </div>

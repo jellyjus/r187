@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="time col-xs-6">
+    <span class="hm">{{time}}</span>
+    <span class="seconds">{{seconds}}</span>
+  </div>
+  <ul class="bars col-xs-6">
+    <li *ngFor="let tool of tools"><i class="fa" ngClass={{tool.icon}}></i></li>
+  </ul>
+</div>
+<div class="row">
+  <div class="mode">
+    {{mode}}
+  </div>
+</div>

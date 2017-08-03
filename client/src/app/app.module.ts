@@ -9,7 +9,8 @@ import { FooterButtonsComponent } from './components/footer-buttons/footer-butto
 import { StartScreenComponent } from './components/start-screen/start-screen.component';
 import { MenuComponent } from './components/menu/menu.component';
 
-import {routing} from './components/display/display.routing'
+import {routing} from './components/display/display.routing';
+import { ToolbarComponent } from './components/toolbar/toolbar.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {routing} from './components/display/display.routing'
     DisplayComponent,
     FooterButtonsComponent,
     StartScreenComponent,
-    MenuComponent
+    MenuComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

@@ -3,18 +3,64 @@ import {AppState} from '../../app.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'menu',
+  selector: 'main-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit, OnDestroy  {
 
+  items;
+  state;
+  curIndex;
+  subscription;
+
   constructor(
     private appState: AppState,
     private router: Router
-  ) { }
+  ){
+    this.items = [
+      {
+        name : 'Шумоподавитель',
+        icon : 'fa-cogs',
+        route : null,
+        active : false
+      },
+      {
+        name : 'Навигация',
+        icon : 'fa-globe',
+        route : null,
+        active : false
+      },
+      {
+        name : 'Принятые сообщения',
+        icon : 'fa-envelope',
+        route : null,
+        active : false
+      },
+      {
+        name : 'Настройки',
+        icon : 'fa-cogs',
+        route : null,
+        active : false
+      },
+      {
+        name : 'Сервисное меню',
+        icon : 'fa-cogs',
+        route : null,
+        active : false
+      },
+      {
+        name : 'Батарея',
+        icon : 'fa-battery-2',
+        route : null,
+        active : false
+      }
+    ];
+  }
 
-  subscription;
+  menuClick(i) {
+    this.curIndex = i;
+  }
 
   ngOnInit() {
     this.appState.set('footerButtons', {

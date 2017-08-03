@@ -20,7 +20,8 @@
       "prefix": "",
       "styles": [
         "assets/bootstrap/css/bootstrap.css",
-        "styles.css"
+        "styles.css",
+        "assets/fontAwesome/css/font-awesome.min.css"
       ],
       "scripts": [
         "assets/jquery/jquery-3.2.1.min.js",
