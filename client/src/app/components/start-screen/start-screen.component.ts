@@ -33,7 +33,7 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
       },
       right: {
         text: 'Направление',
-        route: '/'
+        route: '/direction'
       }
     });
 
@@ -41,6 +41,9 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
       switch (data) {
         case 11:
           this.router.navigate([this.appState.state['footerButtons'].left.route]);
+          break;
+        case 13:
+          this.router.navigate([this.appState.state['footerButtons'].right.route]);
           break;
       }
     });

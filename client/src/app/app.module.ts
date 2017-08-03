@@ -10,6 +10,7 @@ import { StartScreenComponent } from './components/start-screen/start-screen.com
 import { MenuComponent } from './components/menu/menu.component';
 
 import {routing} from './components/display/display.routing';
+import { DirectionComponent } from './components/direction/direction.component'
 import { ToolbarComponent } from './components/toolbar/toolbar.component'
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component'
     FooterButtonsComponent,
     StartScreenComponent,
     MenuComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    DirectionComponent
   ],
   imports: [
     BrowserModule,
