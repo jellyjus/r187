@@ -8,9 +8,7 @@ export type InternalStateType = {
 export class AppState {
   state: InternalStateType = {};
 
-  constructor() {
-  }
-
+  constructor() {}
 
   get(prop?: any) {
     return this.state.hasOwnProperty(prop) ? console.log(prop) : this.state;
@@ -18,5 +16,9 @@ export class AppState {
 
   set(prop: string, value: any) {
     this.state[prop] = value;
+  }
+
+  button_push(id) {
+    this.state.button.next(id);
   }
 }

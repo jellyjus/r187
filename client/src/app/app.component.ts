@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState } from './app.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,15 @@ export class AppComponent implements OnInit{
     private appState: AppState
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.initState();
+  }
+
+  initState() {
+    this.appState.set('button', new Subject<any>())
+  }
 
   button_push(button) {
-    //this.appState.button_push(button);
+    this.appState.button_push(button);
   }
 }

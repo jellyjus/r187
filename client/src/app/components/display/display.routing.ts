@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 export const routes: Routes = [
-  { path: '', component: StartScreenComponent }
+  { path: '', component: StartScreenComponent },
+  { path: 'menu', component: MenuComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

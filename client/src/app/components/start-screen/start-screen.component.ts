@@ -1,28 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy  } from '@angular/core';
 import {AppState} from '../../app.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'start-screen',
-  host: {
-    class: 'start-screen'
-  },
   templateUrl: './start-screen.component.html',
   styleUrls: ['./start-screen.component.css']
 })
-export class StartScreenComponent implements OnInit {
+export class StartScreenComponent implements OnInit, OnDestroy  {
 
   constructor(
-    private appState: AppState
+    private appState: AppState,
+    private router: Router
   ) { }
 
-
-  ngOnInit() {
-    this.appState.set('footerButtons', {
-      left: 'Меню',
-      right: 'Направление'
-    });
-  }
-
+  subscription;
   public startScreen = {
     time: null,
     energy: null,
@@ -30,7 +22,32 @@ export class StartScreenComponent implements OnInit {
     mode: null,
     gsm: null,
     reception: null
+  };
+
+
+  ngOnInit() {
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Меню',
+        route: '/menu'
+      },
+      right: {
+        text: 'Направление',
+        route: '/'
+      }
+    });
+
+    this.subscription = this.appState.state.button.subscribe(data => {
+      switch (data) {
+        case 11:
+          this.router.navigate([this.appState.state['footerButtons'].left.route]);
+          break;
+      }
+    });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }

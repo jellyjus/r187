@@ -4,9 +4,8 @@
   align-items: stretch;
 }
 
-.start-screen {
+.screen {
   flex: 1;
-  background: url("../../../assets/images/wallpaper.jpg") no-repeat 0 50%;
 }
 
 .footer {
