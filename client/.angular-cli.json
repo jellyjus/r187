@@ -23,6 +23,7 @@
         "styles.css"
       ],
       "scripts": [
+        "assets/jquery/jquery-3.2.1.min.js",
         "assets/bootstrap/js/bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",

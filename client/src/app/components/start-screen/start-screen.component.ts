@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StateService} from '../../../services/state.service'
+import {AppState} from '../../app.service'
 
 @Component({
   selector: 'start-screen',
@@ -9,16 +9,16 @@ import {StateService} from '../../../services/state.service'
 export class StartScreenComponent implements OnInit {
 
   constructor(
-    private stateService: StateService
+    private appState: AppState
   ) { }
 
-  public footerButtons = {
-    left: 'Меню',
-    right: 'Направление'
-  };
 
   ngOnInit() {
-    this.stateService.footerButtons = this.footerButtons;
+    this.appState.set('footerButtons', {
+      left: 'Меню',
+      right: 'Направление'
+    });
+
   }
 
 }

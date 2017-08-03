@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { StateService } from '../../../services/state.service';
+import { AppState } from '../../app.service';
 
 @Component({
   selector: 'footer-buttons',
@@ -9,16 +9,12 @@ import { StateService } from '../../../services/state.service';
 export class FooterButtonsComponent implements OnInit {
 
   constructor(
-    private stateService: StateService
+    private appState: AppState
   ) { }
 
-  public footerButtons = {
-    left: null,
-    right: null
-  };
+  state;
 
   ngOnInit() {
-    this.footerButtons = this.stateService.footerButtons;
+    this.state = this.appState.state;
   }
-
 }

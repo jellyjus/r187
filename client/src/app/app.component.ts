@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from './services/state.service';
+import { AppState } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +9,12 @@ import { StateService } from './services/state.service';
 export class AppComponent implements OnInit{
 
   constructor (
-    private stateService: StateService
+    private appState: AppState
   ) {}
 
-  public subscription;
-
-  ngOnInit() {
-    this.subscription = this.stateService.buttons.subscribe(data => {
-      console.log(data);
-      this.stateService.footerButtons.left = 'qweqwe';
-    });
-  }
+  ngOnInit() {}
 
   button_push(button) {
-    this.stateService.button_push(button);
+    //this.appState.button_push(button);
   }
 }
