@@ -1,28 +1,36 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2 side left-side">
-      лево
+      <div class="switcher">
+        <button type="button" class="switcher-up" (click)="button_push(31)">up</button>
+        <button type="button" class="switcher-down" (click)="button_push(32)">down</button>
+      </div>
+      <div class="tangenta">
+        <button type="button" class="tangenta-up" (click)="button_push(41)">up</button>
+        <button type="button" class="tangenta-down" (click)="button_push(42)">down</button>
+      </div>
     </div>
     <div class="col-sm-4 side front-side">
       <div class="display col-sm-7 col-sm-offset-2"></div>
       <div class="grid-buttons">
-        <button type="button" (click)="button_push(11)">left</button>
-        <button type="button" (click)="button_push(12)">up</button>
-        <button type="button" (click)="button_push(13)">right</button>
-        <button type="button" (click)="button_push(14)">call</button>
-        <button type="button" (click)="button_push(15)">down</button>
-        <button type="button" (click)="button_push(16)">break</button>
+        <button type="button" (click)="button_push(11)"><span class="glyphicon glyphicon-chevron-up icon-right"></span>
+</button>
+        <button type="button" (click)="button_push(12)"><span class="glyphicon glyphicon-arrow-up icon-center"></span></button>
+        <button type="button" (click)="button_push(13)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+        <button type="button" (click)="button_push(14)"><span class="glyphicon glyphicon-earphone"></span></button>
+        <button type="button" (click)="button_push(15)"><span class="glyphicon glyphicon-arrow-down"></span></button>
+        <button type="button" (click)="button_push(16)"><span class="glyphicon glyphicon-phone-alt"></span></button>
         <button type="button" (click)="button_push(21)">1</button>
-        <button type="button" (click)="button_push(22)">2</button>
-        <button type="button" (click)="button_push(23)">3</button>
-        <button type="button" (click)="button_push(24)">4</button>
-        <button type="button" (click)="button_push(25)">5</button>
-        <button type="button" (click)="button_push(26)">6</button>
-        <button type="button" (click)="button_push(27)">7</button>
-        <button type="button" (click)="button_push(28)">8</button>
-        <button type="button" (click)="button_push(29)">9</button>
+        <button type="button" (click)="button_push(22)">2<span class="tel-letter">абв</span></button>
+        <button type="button" (click)="button_push(23)">3<span class="tel-letter">гдеё</span></button>
+        <button type="button" (click)="button_push(24)">4<span class="tel-letter">жзий</span></button>
+        <button type="button" (click)="button_push(25)">5<span class="tel-letter">клмн</span></button>
+        <button type="button" (click)="button_push(26)">6<span class="tel-letter">опрс</span></button>
+        <button type="button" (click)="button_push(27)">7<span class="tel-letter">туфх</span></button>
+        <button type="button" (click)="button_push(28)">8<span class="tel-letter">цчш</span></button>
+        <button type="button" (click)="button_push(29)">9<span class="tel-letter">щъы</span></button>
         <button type="button" (click)="button_push(210)">*</button>
-        <button type="button" (click)="button_push(211)">0</button>
+        <button type="button" (click)="button_push(211)">0<span class="tel-letter">ьэюя</span></button>
         <button type="button" (click)="button_push(212)">#</button>
       </div>
     </div>

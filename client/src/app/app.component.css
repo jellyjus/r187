@@ -1,6 +1,94 @@
 .left-side {
   background: url("../assets/images/left-side.png") no-repeat center;
   background-size: contain;
+  position: relative;
+}
+
+.switcher {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 22.8%;
+  left: 34.2%;
+  width: 20%;
+  height: 15%;
+}
+
+.tangenta {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 38.2%;
+  left: 34.5%;
+  width: 20%;
+  height: 15%;
+}
+
+.tangenta button {
+  width: 95%;
+  height: 33.5%;
+  margin-top: -3px;
+  text-indent: -9999px;
+  background-color: #222;
+  border: 1px solid #000;
+  transition: background-color .1s ease-in;
+  transition: box-shadow .2s ease-in;
+}
+
+.tangenta-up {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 1px -1px 2px 1px #000;
+  box-shadow: -1px 1px 2px 1px #000;
+}
+
+.tangenta-down {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: -1px 1px 2px 1px #000;
+}
+
+.switcher button {
+  width: 95%;
+  height: 50%;
+  margin-top: -3px;
+  text-indent: -9999px;
+  background-color: #222;
+  border: 1px solid #000;
+  transition: background-color .1s ease-in;
+  transition: box-shadow .2s ease-in;
+}
+
+.left-side button:hover {
+  border-color: #222;
+  background-color: #000;
+}
+
+.left-side button:focus {
+  box-shadow: none;
+  background-color: #333;
+  border-color: #222;
+}
+
+.switcher-up:focus .switcher-down {
+  box-shadow: 0 -2px 2px 1px #000;
+}
+
+.switcher-down:focus .switcher-up {
+  box-shadow: 0 2px 2px 1px #000;
+}
+
+.switcher-up {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 1px -1px 2px 1px #000;
+  box-shadow: -1px 1px 2px 1px #000;
+}
+
+.switcher-down {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: -1px 1px 2px 1px #000;
 }
 
 .front-side {
@@ -27,12 +115,30 @@
 
 .grid-buttons button {
   width: 30%;
-  padding: 3px 3px;
+  padding: 6.5px 3px;
   margin-bottom: 10px;
+  background-color: #222;
+  color: #fff;
+  border-radius: 9px;
+  border: 1px solid #000;
+  outline: none;
+  text-align: left;
+  transition: all .1s ease-in;
+}
+
+.grid-buttons button:hover {
+  background-color: #000;
+  border-color: #222;
+}
+
+.grid-buttons button:focus {
+  background-color: #333;
+  border-color: #222;
 }
 
 .grid-buttons button:nth-child(n+7) {
   margin-bottom: 3px;
+  margin-top: 5px;
 }
 
 @media (min-width: 768px) {
@@ -52,16 +158,34 @@
     left: 10.5%;
   }
 }
+
+@media (min-width: 1137px) {
+  .display {
+    width: 31%;
+    height: 27.5%;
+    top: 20.1%;
+    left: 18.3%;
+  }
+}
 .display {
   position: absolute;
-  background-color: rebeccapurple;
+  background-color: #222;
   border-radius: 7px;
 }
 
-.button {
-  background: blue;
-  margin: 5px;
-  width: 30px;
-  height: 30px;
-  display: inline-block;
+.tel-letter {
+  margin-left: 2px;
+  font-size: 13px;
+}
+
+.glyphicon {
+  margin-left: 4px;
+}
+
+.glyphicon-phone-alt {
+  color: red;
+}
+
+.glyphicon-earphone {
+  color: green;
 }
