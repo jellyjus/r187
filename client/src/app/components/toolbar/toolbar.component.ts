@@ -18,7 +18,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("f");
     this.tools = [
       {
         type : 'gps',

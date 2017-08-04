@@ -11,7 +11,8 @@ import { MenuComponent } from './components/menu/menu.component';
 
 import {routing} from './components/display/display.routing';
 import { DirectionComponent } from './components/direction/direction.component'
-import { ToolbarComponent } from './components/toolbar/toolbar.component'
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ServicesComponent } from './components/menu/services/services.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component'
     StartScreenComponent,
     MenuComponent,
     ToolbarComponent,
-    DirectionComponent
+    DirectionComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,

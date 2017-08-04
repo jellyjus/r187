@@ -9,64 +9,63 @@ import {Router} from '@angular/router';
 })
 export class MenuComponent implements OnInit, OnDestroy  {
 
-  items;
   state;
   curIndex;
   subscription;
+  items = [
+    {
+      name: 'Шумоподавитель',
+      icon: 'fa-cogs',
+      route: null,
+      active: false
+    },
+    {
+      name: 'Навигация',
+      icon: 'fa-globe',
+      route: null,
+      active: false
+    },
+    {
+      name: 'Принятые сообщения',
+      icon: 'fa-envelope',
+      route: null,
+      active: false
+    },
+    {
+      name: 'Настройки',
+      icon: 'fa-cogs',
+      route: null,
+      active: false
+    },
+    {
+      name: 'Сервисное меню',
+      icon: 'fa-cogs',
+      route: '/services',
+      active: false
+    },
+    {
+      name: 'Батарея',
+      icon: 'fa-battery-2',
+      route: null,
+      active: false
+    }
+  ];
 
   constructor(
     private appState: AppState,
     private router: Router
-  ){
-    this.items = [
-      {
-        name : 'Шумоподавитель',
-        icon : 'fa-cogs',
-        route : null,
-        active : false
-      },
-      {
-        name : 'Навигация',
-        icon : 'fa-globe',
-        route : null,
-        active : false
-      },
-      {
-        name : 'Принятые сообщения',
-        icon : 'fa-envelope',
-        route : null,
-        active : false
-      },
-      {
-        name : 'Настройки',
-        icon : 'fa-cogs',
-        route : null,
-        active : false
-      },
-      {
-        name : 'Сервисное меню',
-        icon : 'fa-cogs',
-        route : null,
-        active : false
-      },
-      {
-        name : 'Батарея',
-        icon : 'fa-battery-2',
-        route : null,
-        active : false
-      }
-    ];
-  }
+  ){}
 
   menuClick(i) {
     this.curIndex = i;
+    this.items[this.curIndex].route ? this.router.navigate([this.router.url + this.items[this.curIndex].route]) : null;
   }
 
   ngOnInit() {
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
-        route: '/menu'
+        route: null
       },
       right: {
         text: 'Назад',
@@ -78,6 +77,9 @@ export class MenuComponent implements OnInit, OnDestroy  {
       switch (data) {
         case 13:
           this.router.navigate([this.appState.state['footerButtons'].right.route]);
+          break;
+        case 11:
+          this.items[this.curIndex].route ? this.router.navigate([this.items[this.curIndex].route]) : null;
           break;
       }
     });
