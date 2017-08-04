@@ -64,7 +64,9 @@
   background-color: #000;
 }
 
+.left-side button:active,
 .left-side button:focus {
+  outline: none;
   box-shadow: none;
   background-color: #333;
   border-color: #222;
@@ -124,6 +126,8 @@
   outline: none;
   text-align: left;
   transition: all .1s ease-in;
+  box-shadow: -1px 1px 1px 1px #000;
+  transition: box-shadow .1s ease-in;
 }
 
 .grid-buttons button:hover {
@@ -131,9 +135,11 @@
   border-color: #222;
 }
 
-.grid-buttons button:focus {
+.grid-buttons button:focus,
+.grid-buttons button:active {
   background-color: #333;
   border-color: #222;
+  box-shadow: none;
 }
 
 .grid-buttons button:nth-child(n+7) {

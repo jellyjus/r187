@@ -10,9 +10,11 @@ import { StartScreenComponent } from './components/start-screen/start-screen.com
 import { MenuComponent } from './components/menu/menu.component';
 
 import {routing} from './components/display/display.routing';
-import { DirectionComponent } from './components/direction/direction.component'
+import { DirectionComponent } from './components/direction/direction.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ServicesComponent } from './components/menu/services/services.component'
+import { RecvMessagesComponent } from './components/menu/recv-messages/recv-messages.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ServicesComponent } from './components/menu/services/services.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { ServicesComponent } from './components/menu/services/services.component
     MenuComponent,
     ToolbarComponent,
     DirectionComponent,
-    ServicesComponent
+    ServicesComponent,
+    RecvMessagesComponent,
+    DirectionComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

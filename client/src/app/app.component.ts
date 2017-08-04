@@ -30,5 +30,6 @@ export class AppComponent implements OnInit{
 
   button_push(button) {
     this.appState.button_push(button);
+
   }
 }
