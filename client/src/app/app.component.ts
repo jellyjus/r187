@@ -19,17 +19,11 @@ export class AppComponent implements OnInit{
 
   initState() {
     this.appState.set('button', new Subject<any>());
-    this.appState.set('directions', [
-      {
-        name: 'СП',
-        type: '12ТП',
-        img: null
-      }
-    ])
+    this.appState.set('channels',this.appState.storage.get('channels'));
+    this.appState.set('directions',this.appState.storage.get('directions'));
   }
 
   button_push(button) {
     this.appState.button_push(button);
-
   }
 }

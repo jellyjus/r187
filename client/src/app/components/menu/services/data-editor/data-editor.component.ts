@@ -1,22 +1,26 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {AppState} from '../../../app.service';
-import {getPath} from '../../../utils/index';
+import {AppState} from '../../../../app.service';
+import {getParentURL} from '../../../../utils/index';
 
 @Component({
-  selector: 'services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  selector: 'data-editor',
+  templateUrl: './data-editor.component.html',
+  styleUrls: ['./data-editor.component.css']
 })
-export class ServicesComponent implements OnInit, OnDestroy {
+export class DataEditorComponent implements OnInit, OnDestroy {
 
   parentUrl;
   subscription;
   curIndex;
   items = [
     {
-      name: 'Редактор данных',
-      route: '/data_editor',
+      name: 'Каналы',
+      route: '/channels',
+    },
+    {
+      name: 'Направления',
+      route: '/directions',
     }
   ];
 
@@ -27,8 +31,8 @@ export class ServicesComponent implements OnInit, OnDestroy {
   ) { }
 
   async ngOnInit() {
-    let path : any = this.router.url.split('/');
-    path = path[path.length - 2];
+    const index = this.router.url.lastIndexOf('/');
+    const path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
@@ -36,7 +40,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
       },
       right: {
         text: 'Назад',
-        route: `../${path}`
+        route: path
       }
     });
 

@@ -40,7 +40,8 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     this.subscription = this.appState.state.button.subscribe(data => {
       switch (data) {
         case 11:
-          this.router.navigate([this.appState.state['footerButtons'].left.route]);
+          let navigationExtras: any = {outlets: {popup: ['menu']}};
+          this.router.navigate([navigationExtras]);
           break;
         case 13:
           this.router.navigate([this.appState.state['footerButtons'].right.route]);

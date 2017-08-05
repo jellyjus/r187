@@ -1,0 +1,8 @@
+<div class="menu-screen row">
+  <div class="toolbar col-xs-12">
+    Редактор данных
+  </div>
+  <ul class="main-menu col-xs-12">
+    <li *ngFor="let item of items; let i = index" class="menu-item" (click)="menuClick(i)" [ngClass]="{'main-menu--active':i == curIndex}"><a>{{item.name}}</a></li>
+  </ul>
+</div>

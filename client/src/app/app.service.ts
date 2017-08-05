@@ -21,4 +21,13 @@ export class AppState {
   button_push(id) {
     this.state.button.next(id);
   }
+
+  public storage = {
+    get: (key) => {
+      return JSON.parse(window.localStorage.getItem(key));
+    },
+    set: (key, object) => {
+      window.localStorage.setItem(key, JSON.stringify(object))
+    }
+  }
 }

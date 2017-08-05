@@ -69,7 +69,7 @@ export class MenuComponent implements OnInit, OnDestroy  {
       },
       right: {
         text: 'Назад',
-        route: '/'
+        route: '../'
       }
     });
 

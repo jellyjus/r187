@@ -15,6 +15,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { RecvMessagesComponent } from './components/menu/recv-messages/recv-messages.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ServicesComponent } from './components/menu/services/services.component';
+import { DataEditorComponent } from './components/menu/services/data-editor/data-editor.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ServicesComponent } from './components/menu/services/services.component
     ServicesComponent,
     RecvMessagesComponent,
     DirectionComponent,
-    HeaderComponent
+    HeaderComponent,
+    DataEditorComponent
   ],
   imports: [
     BrowserModule,
