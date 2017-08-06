@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState } from './app.service';
+import { SocketService } from './services/socket.service';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -10,7 +11,8 @@ import { Subject } from 'rxjs';
 export class AppComponent implements OnInit{
 
   constructor (
-    private appState: AppState
+    private appState: AppState,
+    private socketService : SocketService
   ) {}
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit{
     this.appState.set('button', new Subject<any>());
     this.appState.set('channels',this.appState.storage.get('channels'));
     this.appState.set('directions',this.appState.storage.get('directions'));
+    this.socketService.init();
   }
 
   button_push(button) {

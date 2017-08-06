@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { AppState } from './app.service';
+import { SocketService } from './services/socket.service';
 import { DisplayComponent } from './components/display/display.component';
 import { FooterButtonsComponent } from './components/footer-buttons/footer-buttons.component';
 import { StartScreenComponent } from './components/start-screen/start-screen.component';
@@ -36,7 +37,7 @@ import { DataEditorComponent } from './components/menu/services/data-editor/data
     BrowserModule,
     routing
   ],
-  providers: [AppState],
+  providers: [AppState, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

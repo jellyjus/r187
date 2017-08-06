@@ -6,5 +6,11 @@
   "author": "",
   "devDependencies": {
     "nw-builder": "^3.4.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3"
   }
 }
