@@ -4,6 +4,7 @@ import { RecvMessagesComponent } from '../menu/recv-messages/recv-messages.compo
 import { ServicesComponent } from '../menu/services/services.component';
 import { DataEditorComponent } from '../menu/services/data-editor/data-editor.component';
 import { ChannelsComponent } from '../menu/services/data-editor/channels/channels.component';
+import { CreateChannelComponent } from '../menu/services/data-editor/channels/create-channel/create-channel.component';
 import { DirectionComponent } from '../direction/direction.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
@@ -22,7 +23,13 @@ export const routes: Routes = [
             path: 'data_editor',
             children: [
               {path: '', component: DataEditorComponent},
-              {path: 'channels', component: ChannelsComponent}
+              {
+                path: 'channels',
+                children: [
+                  {path: '', component: ChannelsComponent},
+                  {path: 'create', component: CreateChannelComponent}
+                ]
+              }
             ]
           },
         ]

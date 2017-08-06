@@ -12,20 +12,33 @@ class Server {
     setup() {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended: false}));
-        this.app.use(express.static(__dirname + '/client/build'));
+        this.app.use(express.static(__dirname + '/client/dist'));
 
         this.createServer();
         this.createSockets();
     }
 
     createServer() {
-        const config = JSON.parse(fs.readFileSync('./server-config.json', 'utf8'));
+        this.serverConfig = JSON.parse(fs.readFileSync('./server-config.json', 'utf8'));
         this.server = require('http').createServer(this.app);
-        this.server.listen(config.port, config.host, () =>
-            console.log(`Start listening on ${config.host}:${config.port}`)
+        this.server.listen(this.serverConfig.port, this.serverConfig.host, () =>
+            console.log(`Start listening on ${this.serverConfig.host}:${this.serverConfig.port}`)
         );
 
-        this.app.get('/', (req, res) => res.end('ok'))
+        this.app.get('/', (req, res) => {
+            let index = fs.readFileSync('./client/dist/index.html', 'utf8');
+            index += `
+                <script>
+                    window.host = ${this.serverConfig.host};
+                    window.port = ${this.serverConfig.port};
+                </script>
+            `;
+            res.send(index);
+        });
+
+        this.app.get('*', (req, res) => {
+            res.sendFile(__dirname + '/client/dist/index.html');
+        })
     }
 
     createSockets() {

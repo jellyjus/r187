@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../../app.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'footer-buttons',
@@ -11,7 +11,7 @@ export class FooterButtonsComponent implements OnInit {
 
   constructor(
     private appState: AppState,
-    private router: Router
+    private router: Router,
   ) { }
 
   state;
@@ -21,6 +21,9 @@ export class FooterButtonsComponent implements OnInit {
   }
 
   buttonClick(type) {
-    this.router.navigate([this.appState.state['footerButtons'][type].route]);
+    this.appState.state['footerButtons'][type].route.indexOf('..') !== -1 ?
+      this.router.navigate([this.appState.state['footerButtons'][type].route]) :
+      this.router.navigate([this.router.url + this.appState.state['footerButtons'][type].route]);
+
   }
 }

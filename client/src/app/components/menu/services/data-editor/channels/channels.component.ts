@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import {AppState} from '../../../../../app.service';
 
 @Component({
@@ -14,7 +14,6 @@ export class ChannelsComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private aRoute: ActivatedRoute,
       private appState: AppState
     )
     { }
@@ -28,7 +27,7 @@ export class ChannelsComponent implements OnInit {
     this.appState.set('footerButtons', {
       left: {
         text: 'Создать',
-        route: null
+        route: '/create'
       },
       right: {
         text: 'Назад',

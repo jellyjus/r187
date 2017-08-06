@@ -27,7 +27,24 @@ export class AppState {
       return JSON.parse(window.localStorage.getItem(key));
     },
     set: (key, object) => {
-      window.localStorage.setItem(key, JSON.stringify(object))
+      window.localStorage.setItem(key, JSON.stringify(object));
+      this.set(key, object);
+    },
+    push: (key, object) => {
+      const data = JSON.parse(window.localStorage.getItem(key));
+      if (!data) {
+        this.set(key, [object]);
+        return window.localStorage.setItem(key, JSON.stringify([object]))
+      }
+      if (!Array.isArray(data)) {
+        throw Error('Error on push local storage. Target is not a array!');
+      }
+
+      data.push(object);
+      this.storage.set(key, data);
+      this.set(key, data);
+
+      console.log('valid')
     }
   }
 }
