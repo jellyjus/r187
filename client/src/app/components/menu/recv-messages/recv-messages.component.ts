@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import {AppState} from '../../../app.service';
 
 class Message {
   title;
@@ -23,9 +24,12 @@ class Message {
 })
 export class RecvMessagesComponent implements OnInit, OnDestroy {
 
+  menuName = 'Принятые сообщения';
+  icon = 'fa-envelope';
+
   items;
 
-  constructor() {
+  constructor(private appState: AppState) {
     this.items = [
       new Message('Новое сообщение', new Date(), 'Привет'),
       new Message('ннн', new Date(), 'Пока'),
@@ -34,6 +38,16 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Выбрать',
+        route: null
+      },
+      right: {
+        text: 'Назад',
+        route: '/menu'
+      }
+    });
   }
 
   ngOnDestroy() {

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="menu-head col-xs-12">
+    <i class="fa fa-envelope"></i><span>Создание канала</span>
+  </div>
+  <div class="col-xs-12">
+    <form>
+      <div class="form-group">
+        <label for="ch-name">Название канала</label>
+        <input type="text" id="ch-name" name="name" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="mods">Выберите режим</label>
+        <select id="mods" name="mode" [(ngModel)]="mode">
+          <option value="TETRA_DMO">ТЕТРА - DMO</option>
+          <option value="CHM_25">ЧМ - 25</option>
+          <option value="Another">Другой режим</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ch-freq">Частота</label>
+        <input type="number" id="ch-freq" name="frequency" [(ngModel)]="frequency">
+      </div>
+      <button (click)="addChannel()">Добавить</button>
+    </form>
+  </div>
+</div>

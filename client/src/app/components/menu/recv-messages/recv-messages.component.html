@@ -2,9 +2,7 @@
   <div class="toolbar col-xs-12">
     <toolbar></toolbar>
   </div>
-  <div class="menu-head col-xs-12">
-    <i class="fa fa-envelope"></i><span>Принятые сообщения</span>
-  </div>
+  <header-menu [name]='menuName' [icon]='icon'></header-menu>
   <ul class="recv-messages col-xs-12">
     <li *ngFor="let item of items; let i = index" (click) = "recvMsgClck(i)">
       <p class="recv-msg-title">{{item.title}}</p>

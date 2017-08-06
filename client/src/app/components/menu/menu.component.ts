@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit, OnDestroy  {
     {
       name: 'Принятые сообщения',
       icon: 'fa-envelope',
-      route: null,
+      route: '/recv-messages',
       active: false
     },
     {
@@ -87,6 +87,20 @@ export class MenuComponent implements OnInit, OnDestroy  {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  setActive(i) {
+    this.curIndex = i;
+    if(!this.items[this.curIndex].active) {
+      this.items[this.curIndex].active = true;
+    }
+  }
+
+  disableActive(i) {
+    this.curIndex = i;
+    if(this.items[this.curIndex].active) {
+      this.items[this.curIndex].active = false;
+    }
   }
 
 }

@@ -10,6 +10,8 @@ import {getPath} from '../../../utils/index';
 })
 export class ServicesComponent implements OnInit, OnDestroy {
 
+  menuName = "Сервисное меню";
+  icon = "fa-cogs";
   parentUrl;
   subscription;
   curIndex;

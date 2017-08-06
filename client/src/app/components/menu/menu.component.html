@@ -3,6 +3,6 @@
     <toolbar></toolbar>
   </div>
   <ul class="main-menu col-xs-12">
-    <li *ngFor="let item of items; let i = index" class="menu-item" (click)="menuClick(i)" [ngClass]="{'main-menu--active':i == curIndex}"><i class="fa" ngClass={{item.icon}}></i><a>{{item.name}}</a></li>
+    <li *ngFor="let item of items; let i = index" class="menu-item" (click)="menuClick(i)" (mousedown)="setActive(i)" (mouseup)="disableActive(i)" [ngClass]="{'main-menu--active':item.active == true}"><i class="fa" ngClass={{item.icon}}></i>{{item.name}}</li>
   </ul>
 </div>

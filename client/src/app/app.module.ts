@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,9 @@ import { RecvMessagesComponent } from './components/menu/recv-messages/recv-mess
 import { HeaderComponent } from './components/header/header.component';
 import { ServicesComponent } from './components/menu/services/services.component';
 import { DataEditorComponent } from './components/menu/services/data-editor/data-editor.component';
+import { ChannelsComponent } from './components/menu/services/data-editor/channels/channels.component';
+import { CreateChannelComponent } from './components/menu/services/data-editor/channels/create-channel/create-channel.component';
+
 
 @NgModule({
   declarations: [
@@ -27,15 +31,19 @@ import { DataEditorComponent } from './components/menu/services/data-editor/data
     MenuComponent,
     ToolbarComponent,
     DirectionComponent,
+
     ServicesComponent,
     RecvMessagesComponent,
     DirectionComponent,
     HeaderComponent,
-    DataEditorComponent
+    ChannelsComponent,
+    DataEditorComponent,
+    CreateChannelComponent
   ],
   imports: [
     BrowserModule,
-    routing
+    routing,
+    FormsModule
   ],
   providers: [AppState, SocketService],
   bootstrap: [AppComponent]
