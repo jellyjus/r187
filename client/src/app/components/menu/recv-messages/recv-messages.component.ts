@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AppState} from '../../../app.service';
+import {Router} from '@angular/router';
 
 class Message {
   title;
@@ -29,7 +30,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
 
   items;
 
-  constructor(private appState: AppState) {
+  constructor(private appState: AppState, private router: Router) {
     this.items = [
       new Message('Новое сообщение', new Date(), 'Привет'),
       new Message('ннн', new Date(), 'Пока'),
@@ -38,6 +39,8 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    const index = this.router.url.lastIndexOf('/');
+    const path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
@@ -45,7 +48,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
       },
       right: {
         text: 'Назад',
-        route: '/menu'
+        route: path
       }
     });
   }

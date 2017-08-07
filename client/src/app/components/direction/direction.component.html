@@ -1,3 +1,9 @@
-<p>
-  direction works!
-</p>
+<div class="row">
+  <header-menu [name]="menuName"></header-menu>
+  <ul class="main-menu col-xs-12">
+    <li *ngFor="let dir of directions" (click)="changeCurMode(dir)">
+      <p>{{dir.name}}</p>
+      <p>{{getChName(dir.channelId)}}</p>
+    </li>
+  </ul>
+</div>

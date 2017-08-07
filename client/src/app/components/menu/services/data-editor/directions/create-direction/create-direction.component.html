@@ -1,0 +1,18 @@
+<div class="row">
+  <header-menu [name]="menuName" [icon]="icon"></header-menu>
+  <div class="col-xs-12">
+    <form>
+      <div class="form-group">
+        <label for="ch-name">Название направления</label>
+        <input type="text" id="ch-name" name="name" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="mods">Выберите канал</label>
+        <select id="mods" name="channel" [(ngModel)]="channel">
+          <option *ngFor="let ch of channels" value={{ch.id}}>{{ch.name}}</option>
+        </select>
+      </div>
+      <button (click)="addDir()">Добавить</button>
+    </form>
+  </div>
+</div>

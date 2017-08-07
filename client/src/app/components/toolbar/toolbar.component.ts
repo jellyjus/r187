@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppState} from '../../app.service'
 
 @Component({
   selector: 'toolbar',
@@ -11,13 +12,18 @@ export class ToolbarComponent implements OnInit {
   tools = [];
   mode;
   seconds;
+  curMode;
+  state;
+  channels;
 
 
-  constructor() {
+  constructor(private appState: AppState) {
 
   }
 
   ngOnInit() {
+    this.state = this.appState.state;
+    this.channels = this.state.channels;
     this.tools = [
       {
         type : 'gps',
@@ -28,15 +34,27 @@ export class ToolbarComponent implements OnInit {
         icon : 'fa-rocket'
       }
     ];
-    this.mode = 'Дежурный прием';
-    var d = new Date();
+
+    this.curMode = this.appState.storage.get('curMode');
+    if(this.getChName(this.curMode.channelId) == 'CHM_25') {
+      this.mode = 'Дежурный прием';
+    } else if (this.getChName(this.curMode.channelId) == 'TETRA_DMO') {
+      this.mode = 'Местный';
+    }
+
+
+    let d = new Date();
     this.time = d.getHours() + ':' + d.getMinutes();
     this.seconds = ':' + d.getSeconds();
     setInterval(() => {
-      var d = new Date();
+      let d = new Date();
       this.time = d.getHours() + ':' + d.getMinutes();
       this.seconds = ':' + d.getSeconds();
     }, 1000);
   }
 
+  getChName(id) {
+    const idx = this.channels.findIndex(x => x.id == id);
+    return this.channels[idx].mode;
+  }
 }

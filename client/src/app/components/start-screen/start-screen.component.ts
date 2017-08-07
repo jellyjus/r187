@@ -1,5 +1,5 @@
 import { Component, OnInit,OnDestroy  } from '@angular/core';
-import {AppState} from '../../app.service'
+import {AppState} from '../../app.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -14,8 +14,14 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     private router: Router
   ) { }
 
+  curMode;
+  state;
+  chName;
+  dirName;
+  channels;
+
   subscription;
-  public startScreen = {
+  startScreen = {
     time: null,
     energy: null,
     activeIcons: [],
@@ -26,6 +32,12 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
 
 
   ngOnInit() {
+    this.state = this.appState.state;
+    this.curMode = this.appState.storage.get('curMode')
+    this.chName = this.curMode.name;
+    this.channels = this.state.channels;
+    this.dirName = this.getChName(this.curMode.channelId);
+
     this.appState.set('footerButtons', {
       left: {
         text: 'Меню',
@@ -48,6 +60,11 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
           break;
       }
     });
+  }
+
+  getChName(id) {
+    const idx = this.channels.findIndex(x => x.id == id);
+    return this.channels[idx].mode;
   }
 
   ngOnDestroy() {

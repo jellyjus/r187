@@ -19,8 +19,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { ServicesComponent } from './components/menu/services/services.component';
 import { DataEditorComponent } from './components/menu/services/data-editor/data-editor.component';
 import { ChannelsComponent } from './components/menu/services/data-editor/channels/channels.component';
+import { DirectionsComponent } from './components/menu/services/data-editor/directions/directions.component';
 import { WorkModeComponent } from './components/menu/services/data-editor/work-mode/work-mode.component';
 import { CreateChannelComponent } from './components/menu/services/data-editor/channels/create-channel/create-channel.component';
+import { CreateDirectionComponent } from './components/menu/services/data-editor/directions/create-direction/create-direction.component';
 import { DmoModeComponent } from './components/menu/services/data-editor/work-mode/dmo-mode/dmo-mode.component';
 
 
@@ -41,6 +43,8 @@ import { DmoModeComponent } from './components/menu/services/data-editor/work-mo
     ChannelsComponent,
     DataEditorComponent,
     CreateChannelComponent,
+    DirectionsComponent,
+    CreateDirectionComponent,
     DmoModeComponent
   ],
   imports: [

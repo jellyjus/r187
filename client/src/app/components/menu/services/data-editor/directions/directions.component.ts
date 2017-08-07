@@ -3,33 +3,33 @@ import {Router} from '@angular/router';
 import {AppState} from '../../../../../app.service';
 
 @Component({
-  selector: 'channels',
-  templateUrl: './channels.component.html',
-  styleUrls: ['./channels.component.css']
+  selector: 'directions',
+  templateUrl: './directions.component.html',
+  styleUrls: ['./directions.component.css']
 })
-export class ChannelsComponent implements OnInit {
+export class DirectionsComponent implements OnInit {
 
-  menuName = 'Каналы';
-  icon = 'fa-cogs';
+  menuName = "Направления";
+  icon = "fa-cogs";
   state;
-  channels;
+  directions;
 
   constructor(
       private router: Router,
       private appState: AppState
     )
-    { }
+  { }
 
   ngOnInit() {
     this.state = this.appState.state;
-    this.channels = this.state.channels;
+    this.directions = this.state.directions;
 
     const index = this.router.url.lastIndexOf('/');
     const path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
         text: 'Создать',
-        route: '/create-channel'
+        route: '/create-direction'
       },
       right: {
         text: 'Назад',

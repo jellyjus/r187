@@ -3,19 +3,18 @@ import {Router} from '@angular/router';
 import {AppState} from '../../../../../../app.service';
 
 @Component({
-  selector: 'create-channel',
-  templateUrl: './create-channel.component.html',
-  styleUrls: ['./create-channel.component.css']
+  selector: 'create-direction',
+  templateUrl: './create-direction.component.html',
+  styleUrls: ['./create-direction.component.css']
 })
-export class CreateChannelComponent implements OnInit {
+export class CreateDirectionComponent implements OnInit {
 
-  menuName = "Создание канала";
+  menuName = "Создание направления";
   icon= "fa-cogs";
-  name;
-  mode;
-  frequency;
-
   state;
+  channels;
+  name;
+  channel;
 
   constructor(
     private appState: AppState,
@@ -24,13 +23,15 @@ export class CreateChannelComponent implements OnInit {
 
   ngOnInit() {
     this.state = this.appState.state;
+    this.channels = this.state.channels;
+    console.log(this.channels);
 
     const index = this.router.url.lastIndexOf('/');
     const path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
         text: 'Создать',
-        route: '/create-channel'
+        route: '/create-direction'
       },
       right: {
         text: 'Назад',
@@ -39,15 +40,14 @@ export class CreateChannelComponent implements OnInit {
     });
   }
 
-  addChannel() {
+  addDir() {
     this.appState.storage.push(
-      'channels',
+      'directions',
       {
         name: this.name,
-        mode: this.mode,
-        frequency: this.frequency,
-        id: +new Date()
+        channelId: this.channel,
       }
     );
   }
+
 }

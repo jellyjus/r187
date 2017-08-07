@@ -1,8 +1,8 @@
 <div class="row recv-msg-menu">
   <header-menu [name]="menuName" [icon]="icon"></header-menu>
   <ul class="recv-messages col-xs-12">
-    <li *ngFor="let channel of channels; let i = index">
-      <p class="recv-msg-title">{{channel.name}}</p>
+    <li *ngFor="let direction of directions; let i = index">
+      <p class="recv-msg-title">{{direction.name}}</p>
     </li>
   </ul>
 </div>

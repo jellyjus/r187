@@ -9,6 +9,9 @@ import {AppState} from '../../../../app.service';;
 })
 export class DataEditorComponent implements OnInit, OnDestroy {
 
+  menuName = "Редактор данных";
+  icon = "fa-cogs";
+  parentUrl;
   subscription;
   curIndex;
   items = [

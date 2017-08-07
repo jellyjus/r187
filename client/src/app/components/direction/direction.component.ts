@@ -9,6 +9,11 @@ import {Router} from '@angular/router';
 })
 export class DirectionComponent implements OnInit {
 
+  menuName = "Выбор направления";
+  directions;
+  channels;
+  state;
+
   constructor(
     private appState: AppState,
     private router: Router
@@ -17,6 +22,10 @@ export class DirectionComponent implements OnInit {
   subscription;
 
   ngOnInit() {
+    this.state = this.appState.state;
+    this.directions = this.state.directions;
+    this.channels = this.state.channels;
+
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
@@ -24,7 +33,7 @@ export class DirectionComponent implements OnInit {
       },
       right: {
         text: 'Назад',
-        route: '/'
+        route: '../'
       }
     });
 
@@ -37,4 +46,13 @@ export class DirectionComponent implements OnInit {
     });
   }
 
+  getChName(id) {
+    const idx = this.channels.findIndex(x => x.id == id);
+    return this.channels[idx].name;
+  }
+
+  changeCurMode(dir) {
+    this.appState.storage.set('curMode', dir);
+    this.router.navigate(["/"]);
+  }
 }
