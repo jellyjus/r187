@@ -8,6 +8,8 @@ const getSocketById = (id, sockets) => {
     }
 };
 
+const get
+
 module.exports = {
     getSocketById
 };

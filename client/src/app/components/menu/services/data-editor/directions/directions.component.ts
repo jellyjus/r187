@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AppState} from '../../../../../app.service';
+import {getChName} from '../../../../../utils/index';
 
 @Component({
   selector: 'directions',
@@ -13,6 +14,8 @@ export class DirectionsComponent implements OnInit {
   icon = "fa-exchange";
   state;
   directions;
+  channels;
+  getChName;
 
   constructor(
       private router: Router,
@@ -21,8 +24,11 @@ export class DirectionsComponent implements OnInit {
   { }
 
   ngOnInit() {
+    this.getChName  = getChName;
     this.state = this.appState.state;
     this.directions = this.state.directions;
+    this.channels = this.state.channels;
+
 
     const index = this.router.url.lastIndexOf('/');
     const path = `..${this.router.url.slice(0, index)}`;

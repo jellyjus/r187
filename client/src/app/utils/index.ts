@@ -13,3 +13,8 @@ export const getPath = (url) => {
   /*url = url.split('/');
   console.log(url)*/
 };
+
+export const getChName = (id, arr, propName) => {
+  const idx = arr.findIndex(x => x.id == id);
+  return arr[idx][propName];
+};
