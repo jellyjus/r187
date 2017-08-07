@@ -12,6 +12,7 @@ export class CreateChannelComponent implements OnInit {
   menuName = "Создание канала";
   icon= "fa-cogs";
   name;
+  path;
   mode;
   frequency;
 
@@ -26,15 +27,15 @@ export class CreateChannelComponent implements OnInit {
     this.state = this.appState.state;
 
     const index = this.router.url.lastIndexOf('/');
-    const path = `..${this.router.url.slice(0, index)}`;
+    this.path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
-        text: 'Создать',
-        route: '/create-channel'
+        text: 'Сохранить',
+        func: this.addChannel.bind(this)
       },
       right: {
         text: 'Назад',
-        route: path
+        route: this.path
       }
     });
   }
@@ -49,5 +50,6 @@ export class CreateChannelComponent implements OnInit {
         id: +new Date()
       }
     );
+    this.router.navigate([this.path])
   }
 }

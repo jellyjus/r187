@@ -15,8 +15,9 @@
 .main-menu {
   justify-self: flex-end;
   background-color: #fff;
-  height: 80%;
   display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
   flex-direction: column;
   justify-content: space-between;
 }

@@ -20,7 +20,7 @@ class Server {
     }
 
     createRoutes() {
-        this.app.get('/', (req, res) => {
+        this.app.get('**', (req, res) => {
             res.sendFile(__dirname + '/client/build/index1.html');
         });
     }

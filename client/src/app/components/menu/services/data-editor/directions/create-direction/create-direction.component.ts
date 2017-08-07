@@ -15,6 +15,7 @@ export class CreateDirectionComponent implements OnInit {
   channels;
   name;
   channel;
+  path;
 
   constructor(
     private appState: AppState,
@@ -27,15 +28,15 @@ export class CreateDirectionComponent implements OnInit {
     console.log(this.channels);
 
     const index = this.router.url.lastIndexOf('/');
-    const path = `..${this.router.url.slice(0, index)}`;
+    this.path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
         text: 'Создать',
-        route: '/create-direction'
+        func: this.addDir.bind(this)
       },
       right: {
         text: 'Назад',
-        route: path
+        route: this.path
       }
     });
   }
@@ -48,6 +49,7 @@ export class CreateDirectionComponent implements OnInit {
         channelId: this.channel,
       }
     );
+    this.router.navigate([this.path])
   }
 
 }

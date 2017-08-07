@@ -10,7 +10,7 @@ import {getChName} from '../../../../../utils/index';
 })
 export class DirectionsComponent implements OnInit {
 
-  menuName = "Направления";
+  menuName = "Список направлений";
   icon = "fa-exchange";
   state;
   directions;
