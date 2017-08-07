@@ -24,6 +24,8 @@ import { WorkModeComponent } from './components/menu/services/data-editor/work-m
 import { CreateChannelComponent } from './components/menu/services/data-editor/channels/create-channel/create-channel.component';
 import { CreateDirectionComponent } from './components/menu/services/data-editor/directions/create-direction/create-direction.component';
 import { DmoModeComponent } from './components/menu/services/data-editor/work-mode/dmo-mode/dmo-mode.component';
+import { MessagesComponent } from './components/menu/messages/messages.component';
+import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { DmoModeComponent } from './components/menu/services/data-editor/work-mo
     CreateChannelComponent,
     DirectionsComponent,
     CreateDirectionComponent,
-    DmoModeComponent
+    DmoModeComponent,
+    MessagesComponent,
+    SubMenuComponent
   ],
   imports: [
     BrowserModule,

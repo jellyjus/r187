@@ -21,30 +21,8 @@ class Server {
 
     createRoutes() {
         this.app.get('/', (req, res) => {
-            let template = fs.readFileSync('./client/build/index1.html', 'utf8');
-            const index = template.indexOf('<body>');
-            template = template.slice(0, index+7) + `
-                <script>
-                    window['host'] = "${this.serverConfig.host}";
-                    window['port'] = ${this.serverConfig.port};
-                </script>
-            ` + template.slice(index+7);
-
-            res.send(template);
+            res.sendFile(__dirname + '/client/build/index1.html');
         });
-
-        this.app.get('**', (req, res) => {
-            let template = fs.readFileSync('./client/build/index1.html', 'utf8');
-            const index = template.indexOf('<body>');
-            template = template.slice(0, index+7) + `
-                <script>
-                    window['host'] = "${this.serverConfig.host}";
-                    window['port'] = ${this.serverConfig.port};
-                </script>
-            ` + template.slice(index+7);
-
-            res.send(template);
-        })
     }
 
     createServer() {

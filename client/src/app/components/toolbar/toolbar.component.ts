@@ -38,12 +38,13 @@ export class ToolbarComponent implements OnInit {
     ];
 
     this.curMode = this.appState.storage.get('curMode');
-    if(this.getChName(this.curMode.channelId) == 'CHM_25') {
-      this.mode = 'Дежурный прием';
-    } else if (this.getChName(this.curMode.channelId) == 'TETRA_DMO') {
-      this.mode = 'Местный';
+    if (this.curMode) {
+      if(this.getChName(this.curMode.channelId) == 'CHM_25') {
+        this.mode = 'Дежурный прием';
+      } else if (this.getChName(this.curMode.channelId) == 'TETRA_DMO') {
+        this.mode = 'Местный';
+      }
     }
-
 
     let d = new Date();
     this.time = d.getHours() + ':' + d.getMinutes();

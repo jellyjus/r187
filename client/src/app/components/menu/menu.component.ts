@@ -17,37 +17,36 @@ export class MenuComponent implements OnInit, OnDestroy  {
       name: 'Шумоподавитель',
       icon: 'fa-cogs',
       route: null,
-      active: false
     },
     {
       name: 'Навигация',
       icon: 'fa-globe',
       route: null,
-      active: false
     },
     {
       name: 'Принятые сообщения',
       icon: 'fa-envelope',
       route: '/recv-messages',
-      active: false
+    },
+    {
+      name: 'Сообщения',
+      icon: 'fa-envelope',
+      route: '/messages',
     },
     {
       name: 'Настройки',
       icon: 'fa-cogs',
       route: null,
-      active: false
     },
     {
       name: 'Сервисное меню',
       icon: 'fa-cogs',
       route: '/services',
-      active: false
     },
     {
       name: 'Батарея',
       icon: 'fa-battery-2',
       route: null,
-      active: false
     }
   ];
 
@@ -87,20 +86,6 @@ export class MenuComponent implements OnInit, OnDestroy  {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  setActive(i) {
-    this.curIndex = i;
-    if(!this.items[this.curIndex].active) {
-      this.items[this.curIndex].active = true;
-    }
-  }
-
-  disableActive(i) {
-    this.curIndex = i;
-    if(this.items[this.curIndex].active) {
-      this.items[this.curIndex].active = false;
-    }
   }
 
 }

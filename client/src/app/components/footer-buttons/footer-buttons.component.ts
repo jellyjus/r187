@@ -21,9 +21,13 @@ export class FooterButtonsComponent implements OnInit {
   }
 
   buttonClick(type) {
-    this.appState.state['footerButtons'][type].route.indexOf('..') !== -1 ?
-      this.router.navigate([this.appState.state['footerButtons'][type].route]) :
-      this.router.navigate([this.router.url + this.appState.state['footerButtons'][type].route]);
-
+    if (this.appState.state['footerButtons'][type].func) {
+      this.appState.state['footerButtons'][type].func()
+    }
+    else {
+      this.appState.state['footerButtons'][type].route.indexOf('..') !== -1 ?
+        this.router.navigate([this.appState.state['footerButtons'][type].route]) :
+        this.router.navigate([this.router.url + this.appState.state['footerButtons'][type].route]);
+    }
   }
 }

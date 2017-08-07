@@ -34,10 +34,12 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.state = this.appState.state;
-    this.curMode = this.appState.storage.get('curMode')
-    this.chName = this.curMode.name;
     this.channels = this.state.channels;
-    this.dirName = this.getChName(this.curMode.channelId);
+    this.curMode = this.appState.storage.get('curMode');
+    if (this.curMode) {
+      this.chName = this.curMode.name;
+      this.dirName = this.getChName(this.curMode.channelId);
+    }
     let d = new Date();
     let ops = {
       year: 'numeric',
