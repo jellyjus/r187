@@ -1,0 +1,28 @@
+.dir-name {
+  color: #000;
+}
+
+.ch-name {
+  color: #2b669a;
+}
+
+.main-menu {
+  padding: 0;
+}
+
+.main-menu li {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.main-menu li:hover {
+  cursor: pointer;
+}
+
+.main-menu li:active {
+  background-color: #7b007b;
+}
+
+.main-menu li:active span {
+  color: #fff;
+}

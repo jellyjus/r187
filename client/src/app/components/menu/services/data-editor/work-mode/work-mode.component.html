@@ -1,8 +1,6 @@
 <div class="menu-screen row">
-  <div class="toolbar col-xs-12">
-    Режим работы
-  </div>
+  <header-menu [name]="menuName" [icon]="icon"></header-menu>
   <ul class="main-menu col-xs-12">
-    <li *ngFor="let item of items; let i = index" class="menu-item" (click)="menuClick(i)" [ngClass]="{'main-menu--active':i == curIndex}"><a>{{item.name}}</a></li>
+    <li *ngFor="let item of items; let i = index" class="menu-item" (click)="menuClick(i)" [ngClass]="{'main-menu--active':i == curIndex}">{{item.name}}</li>
   </ul>
 </div>

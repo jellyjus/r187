@@ -1,9 +1,7 @@
 <div class="menu-screen row" >
-  <div class="toolbar col-xs-12">
-    DMO
-  </div>
+<header-menu [name]="menuName" [icon]="icon"></header-menu>
   <ul class="main-menu col-xs-12" *ngIf="!trigger">
-    <li class="menu-item" (click)="onClick()"><a>Идентификатор DMO</a></li>
+    <li class="menu-item" (click)="onClick()">Идентификатор DMO</li>
   </ul>
 
   <form>

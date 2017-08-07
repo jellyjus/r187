@@ -19,6 +19,7 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
   chName;
   dirName;
   channels;
+  date;
 
   subscription;
   startScreen = {
@@ -37,6 +38,13 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     this.chName = this.curMode.name;
     this.channels = this.state.channels;
     this.dirName = this.getChName(this.curMode.channelId);
+    let d = new Date();
+    let ops = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    this.date = d.toLocaleString("ru", ops);
 
     this.appState.set('footerButtons', {
       left: {

@@ -6,14 +6,10 @@
   height: 100%;
 }
 
-.toolbar {
-  height: 20%;
-  background-color: transparent;
-}
-
 .main-menu {
   justify-self: flex-end;
   background-color: #fff;
+  padding: 0;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -25,16 +21,15 @@
   font-size: 20px;
 }
 
-.main-menu--active {
-  background-color: #7b007b;
-  color: #fff;
-}
-
-.main-menu--active a {
-  color: #fff;
+.main-menu li:hover {
+  cursor: pointer;
 }
 
 .menu-item a {
   text-decoration: none;
   color: #000;
+}
+
+.form-group {
+  margin: 10px 0;
 }

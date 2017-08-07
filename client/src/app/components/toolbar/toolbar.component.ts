@@ -11,6 +11,7 @@ export class ToolbarComponent implements OnInit {
   time;
   tools = [];
   mode;
+  ssi;
   seconds;
   curMode;
   state;
@@ -24,6 +25,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
     this.state = this.appState.state;
     this.channels = this.state.channels;
+    this.ssi = this.state.ssi || " ";
     this.tools = [
       {
         type : 'gps',

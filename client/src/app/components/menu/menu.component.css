@@ -26,9 +26,13 @@
   font-size: 20px;
 }
 
-.main-menu--active {
+.menu-item:active {
   background-color: #7b007b;
   color: #fff;
+}
+
+.menu-item:hover {
+  cursor: pointer;
 }
 
 .menu-item span {

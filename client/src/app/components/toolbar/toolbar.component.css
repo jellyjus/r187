@@ -16,6 +16,7 @@
   font-size: 24px;
   font-weight: 400;
   color: #fff;
+  padding: 5px 10px;
 }
 
 .bars {
@@ -29,6 +30,3 @@
   margin-left: 5px;
 }
 
-.mode {
-  padding: 5px 10px;
-}

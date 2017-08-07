@@ -10,7 +10,7 @@ import {AppState} from '../../../../../app.service';
 export class DirectionsComponent implements OnInit {
 
   menuName = "Направления";
-  icon = "fa-cogs";
+  icon = "fa-exchange";
   state;
   directions;
 

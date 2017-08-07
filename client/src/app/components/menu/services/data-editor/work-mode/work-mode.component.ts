@@ -9,6 +9,8 @@ import {AppState} from '../../../../../app.service';
 })
 export class WorkModeComponent implements OnInit {
 
+  menuName = "Режим работы";
+  icon = "fa-sliders";
   subscription;
   curIndex;
   items = [

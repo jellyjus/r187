@@ -1,6 +1,5 @@
 .menu-screen {
   display: flex;
-  align-items: stretch;
   flex-direction: column;
   background-size: cover;
   height: 100%;
@@ -15,9 +14,10 @@
   justify-self: flex-end;
   background-color: #fff;
   height: 80%;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .menu-item {
@@ -25,13 +25,13 @@
   font-size: 20px;
 }
 
-.main-menu--active {
+.main-menu li:active {
   background-color: #7b007b;
   color: #fff;
 }
 
-.main-menu--active a {
-  color: #fff;
+.main-menu li:hover {
+  cursor: pointer;
 }
 
 .menu-item a {

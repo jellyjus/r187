@@ -2,8 +2,8 @@
   <header-menu [name]="menuName"></header-menu>
   <ul class="main-menu col-xs-12">
     <li *ngFor="let dir of directions" (click)="changeCurMode(dir)">
-      <p>{{dir.name}}</p>
-      <p>{{getChName(dir.channelId)}}</p>
+      <span class="dir-name">{{dir.name}}</span><br>
+      <span class="ch-name">{{getChName(dir.channelId)}}</span>
     </li>
   </ul>
 </div>

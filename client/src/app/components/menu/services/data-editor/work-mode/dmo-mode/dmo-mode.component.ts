@@ -10,6 +10,8 @@ import {SocketService} from '../../../../../../services/socket.service';
 })
 export class DmoModeComponent implements OnInit {
 
+  menuName = "DMO";
+  icon = "fa-signal";
   subscription;
   state;
   socket;
