@@ -1,28 +1,28 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Router} from '@angular/router';
-import {AppState} from '../../../../app.service';;
+import {AppState} from '../../../../../app.service';
 
 @Component({
-  selector: 'data-editor',
-  templateUrl: './data-editor.component.html',
-  styleUrls: ['./data-editor.component.css']
+  selector: 'work-mode',
+  templateUrl: './work-mode.component.html',
+  styleUrls: ['./work-mode.component.css']
 })
-export class DataEditorComponent implements OnInit, OnDestroy {
+export class WorkModeComponent implements OnInit {
 
   subscription;
   curIndex;
   items = [
     {
-      name: 'Каналы',
-      route: '/channels'
+      name: 'Сети ТМО',
+      route: null
     },
     {
-      name: 'Направления',
-      route: '/directions'
+      name: 'Сети DMO',
+      route: '/dmo'
     },
     {
-      name: 'Режим работы',
-      route: '/work_mode'
+      name: 'Статусные сообщения',
+      route: null
     }
   ];
 

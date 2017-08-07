@@ -23,6 +23,7 @@ export class AppComponent implements OnInit{
     this.appState.set('button', new Subject<any>());
     this.appState.set('channels',this.appState.storage.get('channels'));
     this.appState.set('directions',this.appState.storage.get('directions'));
+    this.appState.set('ssi',this.appState.storage.get('ssi'));
     this.socketService.init();
   }
 

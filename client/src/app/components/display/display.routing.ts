@@ -4,6 +4,8 @@ import { RecvMessagesComponent } from '../menu/recv-messages/recv-messages.compo
 import { ServicesComponent } from '../menu/services/services.component';
 import { DataEditorComponent } from '../menu/services/data-editor/data-editor.component';
 import { ChannelsComponent } from '../menu/services/data-editor/channels/channels.component';
+import { WorkModeComponent } from '../menu/services/data-editor/work-mode/work-mode.component';
+import { DmoModeComponent } from '../menu/services/data-editor/work-mode/dmo-mode/dmo-mode.component';
 import { CreateChannelComponent } from '../menu/services/data-editor/channels/create-channel/create-channel.component';
 import { DirectionComponent } from '../direction/direction.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -23,6 +25,13 @@ export const routes: Routes = [
             path: 'data_editor',
             children: [
               {path: '', component: DataEditorComponent},
+              {
+                path: 'work_mode',
+                children: [
+                  {path: '', component: WorkModeComponent},
+                  {path: 'dmo', component: DmoModeComponent}
+                ]
+              },
               {
                 path: 'channels',
                 children: [

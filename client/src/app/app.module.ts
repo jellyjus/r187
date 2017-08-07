@@ -19,7 +19,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ServicesComponent } from './components/menu/services/services.component';
 import { DataEditorComponent } from './components/menu/services/data-editor/data-editor.component';
 import { ChannelsComponent } from './components/menu/services/data-editor/channels/channels.component';
+import { WorkModeComponent } from './components/menu/services/data-editor/work-mode/work-mode.component';
 import { CreateChannelComponent } from './components/menu/services/data-editor/channels/create-channel/create-channel.component';
+import { DmoModeComponent } from './components/menu/services/data-editor/work-mode/dmo-mode/dmo-mode.component';
 
 
 @NgModule({
@@ -31,14 +33,15 @@ import { CreateChannelComponent } from './components/menu/services/data-editor/c
     MenuComponent,
     ToolbarComponent,
     DirectionComponent,
-
+    WorkModeComponent,
     ServicesComponent,
     RecvMessagesComponent,
     DirectionComponent,
     HeaderComponent,
     ChannelsComponent,
     DataEditorComponent,
-    CreateChannelComponent
+    CreateChannelComponent,
+    DmoModeComponent
   ],
   imports: [
     BrowserModule,

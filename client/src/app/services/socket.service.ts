@@ -7,10 +7,9 @@ export class SocketService {
   constructor() {}
 
   public socket;
-  private url = '192.168.0.11:80';
+  private url = `${window['host']}:${window['port']}`;
 
   init() {
-    console.log('init');
     this.socket = io(this.url);
   }
 

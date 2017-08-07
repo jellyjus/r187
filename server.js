@@ -12,10 +12,39 @@ class Server {
     setup() {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended: false}));
-        this.app.use(express.static(__dirname + '/client/dist'));
+        this.app.use(express.static(__dirname + '/client/build'));
 
+        this.createRoutes();
         this.createServer();
         this.createSockets();
+    }
+
+    createRoutes() {
+        this.app.get('/', (req, res) => {
+            let template = fs.readFileSync('./client/build/index1.html', 'utf8');
+            const index = template.indexOf('<body>');
+            template = template.slice(0, index+7) + `
+                <script>
+                    window['host'] = "${this.serverConfig.host}";
+                    window['port'] = ${this.serverConfig.port};
+                </script>
+            ` + template.slice(index+7);
+
+            res.send(template);
+        });
+
+        this.app.get('**', (req, res) => {
+            let template = fs.readFileSync('./client/build/index1.html', 'utf8');
+            const index = template.indexOf('<body>');
+            template = template.slice(0, index+7) + `
+                <script>
+                    window['host'] = "${this.serverConfig.host}";
+                    window['port'] = ${this.serverConfig.port};
+                </script>
+            ` + template.slice(index+7);
+
+            res.send(template);
+        })
     }
 
     createServer() {
@@ -24,21 +53,6 @@ class Server {
         this.server.listen(this.serverConfig.port, this.serverConfig.host, () =>
             console.log(`Start listening on ${this.serverConfig.host}:${this.serverConfig.port}`)
         );
-
-        this.app.get('/', (req, res) => {
-            let index = fs.readFileSync('./client/dist/index.html', 'utf8');
-            index += `
-                <script>
-                    window.host = ${this.serverConfig.host};
-                    window.port = ${this.serverConfig.port};
-                </script>
-            `;
-            res.send(index);
-        });
-
-        this.app.get('*', (req, res) => {
-            res.sendFile(__dirname + '/client/dist/index.html');
-        })
     }
 
     createSockets() {
@@ -55,6 +69,7 @@ class Server {
                 if (typeof id !== 'number') {
                     return new Error('Error on set socket id')
                 }
+                console.log('Change socket id to', id);
 
                 socket._id = id;
             });
