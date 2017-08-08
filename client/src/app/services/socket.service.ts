@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import * as serverConfig from '../../../../server-config.json';
+import { AppState } from '../app.service';
 
 @Injectable()
 export class SocketService {
 
-  constructor() {}
+  constructor(private appState: AppState)
+  {}
 
   public socket;
   private url = `${serverConfig['host']}:${serverConfig['port']}`;
@@ -17,6 +19,8 @@ export class SocketService {
 
     this.socket.on('newMessage', (data) => {
       console.log('newMessage', data);
+      data.date = new Date();
+      this.appState.storage.push('recvMsgs', data);
     })
   }
 

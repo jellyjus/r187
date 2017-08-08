@@ -1,6 +1,6 @@
 <ul class="menu">
   <li *ngFor="let menuItem of menuItems" (click)="menuItem.action()">
-    <span class="icon">ico</span>
+    <span class="fa" ngClass={{menuItem.icon}}></span>
     {{menuItem.name}}
   </li>
 </ul>

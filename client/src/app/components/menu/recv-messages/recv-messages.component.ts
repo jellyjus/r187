@@ -3,14 +3,11 @@ import {AppState} from '../../../app.service';
 import {Router} from '@angular/router';
 
 class Message {
-  title;
   time;
   date;
   text;
-  curIndex;
 
-  constructor(title, date, text) {
-    this.title = title;
+  constructor(date, text) {
     this.time = date.getHours() + ':' + date.getMinutes();
     this.date = date.getFullYear() + ':' + date.getMonth() + ':' + date.getDay();
     this.text = text;
@@ -30,17 +27,12 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
 
   items;
 
-  constructor(private appState: AppState, private router: Router) {
-    this.items = [
-      new Message('Новое сообщение', new Date(), 'Привет'),
-      new Message('ннн', new Date(), 'Пока'),
-      new Message('общ', new Date(), 'Прощай')
-    ]
-  }
+  constructor(private appState: AppState, private router: Router) {}
 
   ngOnInit() {
     const index = this.router.url.lastIndexOf('/');
     const path = `..${this.router.url.slice(0, index)}`;
+    this.items = this.appState.storage.get("recvMsgs");
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',

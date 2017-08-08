@@ -17,10 +17,28 @@
   justify-content: flex-start;
   height: 80%;
   overflow-y: auto;
+  padding: 0;
+}
+
+.messages li {
+  padding: 5px 10px;
+  font-weight: 300;
+}
+
+.messages li:hover {
+  cursor: pointer;
 }
 
 .current-message {
   background-color: black;
   color: white;
+}
+
+.add-msg-area {
+  height: 100%;
+  resize: none;
+  border: none;
+  padding: 5px;
+  background-color: #faf2cc;
 }
 

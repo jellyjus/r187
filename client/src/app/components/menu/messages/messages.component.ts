@@ -26,15 +26,18 @@ export class MessagesComponent implements OnInit {
   menuItems = [
     {
       name: 'Отправить',
-      action: this.sendMessage.bind(this)
+      action: this.sendMessage.bind(this),
+      icon: "fa-arrow-up"
     },
     {
       name: 'Добавить',
-      action: this.addMessage.bind(this)
+      action: this.addMessage.bind(this),
+      icon: "fa-plus"
     },
     {
       name: 'Удалить',
-      action: this.deleteMessage.bind(this)
+      action: this.deleteMessage.bind(this),
+      icon: "fa-trash"
     }
   ];
 
@@ -67,14 +70,15 @@ export class MessagesComponent implements OnInit {
   addMessage() {
     this.mode = 'add';
     this.subMenuTrigger = !this.subMenuTrigger;
+    this.message = '';
     this.appState.set('footerButtons', {
       left: {
         text: 'Сохранить',
         func: this.saveMessage.bind(this)
       },
       right: {
-        text: 'Стереть',
-        route: null
+        text: 'Отменить',
+        func: this.changeMode.bind(this)
       }
     });
   }
@@ -98,8 +102,25 @@ export class MessagesComponent implements OnInit {
     this.router.navigate(['/start-screen', {message: this.state.messages[this.currentMessage]}])
   }
 
-  deleteMessage() {
-    console.log('delete')
+  deleteMessage(curMsg) {
+    this.appState.storage.delete("messages", curMsg);
+  }
+
+  changeMode() {
+    if(this.mode)
+      this.mode = null;
+    else
+      this.mode = "add";
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Меню',
+        func: this.triggerSubMenu.bind(this)
+      },
+      right: {
+        text: 'Назад',
+        route: this.path
+      }
+    });
   }
 
 

@@ -4,8 +4,8 @@
   </div>
   <header-menu [name]='menuName' [icon]='icon'></header-menu>
   <ul class="recv-messages col-xs-12">
-    <li *ngFor="let item of items; let i = index" (click) = "recvMsgClck(i)">
-      <p class="recv-msg-title">{{item.title}}</p>
+    <li *ngFor="let item of items; let i = index">
+      <p class="recv-msg-title">{{item}}</p>
       <span class="recv-msg-time">{{item.time}}</span>
       <span class="recv-msg-date">{{item.date}}</span>
     </li>

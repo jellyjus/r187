@@ -6,13 +6,12 @@
 
   <ul class="messages col-xs-12" *ngIf="!mode">
     <li *ngFor="let message of state.messages; let i = index" (click)="currentMessage = i" [ngClass]="{'current-message': currentMessage == i}">
-      <i class="fa fa-envelope"></i>
       {{message}}
     </li>
   </ul>
 
   <div class="messages add-message" *ngIf="mode === 'add'">
-    <textarea [(ngModel)]="message"></textarea>
+    <textarea [(ngModel)]="message" class="add-msg-area"></textarea>
   </div>
 
   <sub-menu [menuItems]="menuItems" *ngIf="subMenuTrigger"></sub-menu>

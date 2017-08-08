@@ -30,6 +30,11 @@ export class AppState {
       window.localStorage.setItem(key, JSON.stringify(object));
       this.set(key, object);
     },
+    delete: (key, idx) => {
+      const data = JSON.parse(window.localStorage.getItem(key));
+      data.splice(idx, 1);
+      this.storage.set(key, data);
+    },
     push: (key, object) => {
       const data = JSON.parse(window.localStorage.getItem(key));
       if (!data) {
