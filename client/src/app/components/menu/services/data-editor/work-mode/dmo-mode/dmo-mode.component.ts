@@ -33,7 +33,7 @@ export class DmoModeComponent implements OnInit {
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
-        route: null
+        func: this.changeSSI.bind(this)
       },
       right: {
         text: 'Назад',
@@ -58,7 +58,8 @@ export class DmoModeComponent implements OnInit {
 
   changeSSI() {
     this.appState.storage.set('ssi', this.ssi);
-    this.socket.emit('setId', this.ssi)
+    this.socket.emit('setId', this.ssi);
+    this.trigger = false;
   }
 
   ngOnDestroy() {

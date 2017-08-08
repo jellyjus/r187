@@ -19,7 +19,7 @@ export class SocketService {
 
     this.socket.on('newMessage', (data) => {
       console.log('newMessage', data);
-      data.date = new Date();
+      data.date = new Date().toLocaleString();
       this.appState.storage.push('recvMsgs', data);
     })
   }

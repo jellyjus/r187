@@ -22,3 +22,7 @@
 .recv-messages li {
   padding: 10px 0;
 }
+
+.recv-messages li:hover {
+  cursor: pointer;
+}
