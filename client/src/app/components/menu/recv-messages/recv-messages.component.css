@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: flex-start;
   height: 80%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .recv-messages li {

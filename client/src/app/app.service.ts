@@ -43,8 +43,6 @@ export class AppState {
       data.push(object);
       this.storage.set(key, data);
       this.set(key, data);
-
-      console.log('valid')
     }
   }
 }

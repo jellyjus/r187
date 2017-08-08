@@ -10,8 +10,14 @@ export class SocketService {
   public socket;
   private url = `${serverConfig['host']}:${serverConfig['port']}`;
 
-  init() {
+  init(ssi) {
     this.socket = io(this.url);
+
+    this.socket.emit('setId', ssi);
+
+    this.socket.on('newMessage', (data) => {
+      console.log('newMessage', data);
+    })
   }
 
 }

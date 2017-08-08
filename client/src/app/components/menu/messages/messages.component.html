@@ -1,6 +1,19 @@
-<p>
-  messages works!
-</p>
-<div class="row">
+<div class="row msgs-menu">
+  <div class="toolbar col-xs-12">
+    <toolbar></toolbar>
+  </div>
+  <header-menu [name]='menuName' [icon]='icon'></header-menu>
+
+  <ul class="messages col-xs-12" *ngIf="!mode">
+    <li *ngFor="let message of state.messages; let i = index" (click)="currentMessage = i" [ngClass]="{'current-message': currentMessage == i}">
+      <i class="fa fa-envelope"></i>
+      {{message}}
+    </li>
+  </ul>
+
+  <div class="messages add-message" *ngIf="mode === 'add'">
+    <textarea [(ngModel)]="message"></textarea>
+  </div>
+
   <sub-menu [menuItems]="menuItems" *ngIf="subMenuTrigger"></sub-menu>
 </div>

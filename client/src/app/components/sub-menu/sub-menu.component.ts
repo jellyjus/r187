@@ -11,8 +11,6 @@ export class SubMenuComponent implements OnInit {
 
   @Input() menuItems: string;
 
-  ngOnInit() {
-    console.log(this.menuItems)
-  }
+  ngOnInit() {}
 
 }

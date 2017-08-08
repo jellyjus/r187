@@ -15,7 +15,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 export const routes: Routes = [
-  {path: '', component: StartScreenComponent},
+  {path: '', redirectTo: 'start-screen', pathMatch: 'full'},
+  {path: 'start-screen', component: StartScreenComponent},
   {
     path: 'menu',
     children: [

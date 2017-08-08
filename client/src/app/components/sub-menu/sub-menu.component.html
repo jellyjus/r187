@@ -1,3 +1,7 @@
-<p>
-  sub-menu works!
-</p>
+<ul class="menu">
+  <li *ngFor="let menuItem of menuItems" (click)="menuItem.action()">
+    <span class="icon">ico</span>
+    {{menuItem.name}}
+  </li>
+</ul>
+

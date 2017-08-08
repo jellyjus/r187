@@ -26,6 +26,7 @@ import { CreateDirectionComponent } from './components/menu/services/data-editor
 import { DmoModeComponent } from './components/menu/services/data-editor/work-mode/dmo-mode/dmo-mode.component';
 import { MessagesComponent } from './components/menu/messages/messages.component';
 import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
+import { PhoneComponent } from './components/start-screen/phone/phone.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
     CreateDirectionComponent,
     DmoModeComponent,
     MessagesComponent,
-    SubMenuComponent
+    SubMenuComponent,
+    PhoneComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+.menu {
+  background-color: white;
+  color: black;
+  border: 1px #ccc6cc solid;
+  padding: 3px;
+}
+
+.menu li {
+  padding: 3px;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: #cbcccc;
+}
+
+.icon {
+  background-color: #a6a0a6;
+}

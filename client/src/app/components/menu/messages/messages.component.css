@@ -1,0 +1,26 @@
+.msgs-menu {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  background: url("../../../../assets/images/wallpaper.jpg") no-repeat 0 50%;
+  background-size: cover;
+  height: 100%;
+  justify-content: flex-end;
+  font-family: 'Oswald', sans-serif;
+}
+
+.messages {
+  background-color: #fff;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 80%;
+  overflow-y: auto;
+}
+
+.current-message {
+  background-color: black;
+  color: white;
+}
+

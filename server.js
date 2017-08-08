@@ -54,7 +54,9 @@ class Server {
 
             socket.on('sendMessage', (data) => {
                 const target = utils.getSocketById(data.id, this.io.sockets.connected);
-                console.log(target);
+                if (target) {
+                    target.emit('newMessage', data)
+                }
             });
         });
     }

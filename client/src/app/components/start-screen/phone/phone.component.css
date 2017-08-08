@@ -1,0 +1,11 @@
+.phone {
+  background-color: white;
+  padding: 10px 20px;
+  margin-top: 30%;
+  border: 1px black solid;
+}
+
+.phone input {
+  margin: 40px 0;
+  width: 100%;
+}

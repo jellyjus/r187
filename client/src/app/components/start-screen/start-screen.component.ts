@@ -1,6 +1,6 @@
 import { Component, OnInit,OnDestroy  } from '@angular/core';
 import {AppState} from '../../app.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'start-screen',
@@ -11,7 +11,8 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
 
   constructor(
     private appState: AppState,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   curMode;
@@ -20,6 +21,7 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
   dirName;
   channels;
   date;
+  urlParams;
 
   subscription;
   startScreen = {
@@ -36,6 +38,8 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     this.state = this.appState.state;
     this.channels = this.state.channels;
     this.curMode = this.appState.storage.get('curMode');
+    this.urlParams = this.route.snapshot.params;
+    console.log(this.curMode);
     if (this.curMode) {
       this.chName = this.curMode.name;
       this.dirName = this.getChName(this.curMode.channelId);
@@ -51,11 +55,11 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     this.appState.set('footerButtons', {
       left: {
         text: 'Меню',
-        route: '/menu'
+        route: '/../menu'
       },
       right: {
         text: 'Направление',
-        route: '/direction'
+        route: '/../direction'
       }
     });
 
