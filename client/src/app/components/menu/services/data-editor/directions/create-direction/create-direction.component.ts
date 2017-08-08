@@ -25,7 +25,6 @@ export class CreateDirectionComponent implements OnInit {
   ngOnInit() {
     this.state = this.appState.state;
     this.channels = this.state.channels;
-    console.log(this.channels);
 
     const index = this.router.url.lastIndexOf('/');
     this.path = `..${this.router.url.slice(0, index)}`;

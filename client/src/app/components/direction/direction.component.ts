@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppState} from '../../app.service'
+import {SocketService} from '../../services/socket.service'
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,16 +14,19 @@ export class DirectionComponent implements OnInit {
   directions;
   channels;
   state;
+  socket;
 
   constructor(
     private appState: AppState,
-    private router: Router
+    private router: Router,
+    private socketService: SocketService
   ) { }
 
   subscription;
 
   ngOnInit() {
     this.state = this.appState.state;
+    this.socket = this.socketService.socket;
     this.directions = this.state.directions;
     this.channels = this.state.channels;
 
@@ -54,5 +58,7 @@ export class DirectionComponent implements OnInit {
   changeCurMode(dir) {
     this.appState.storage.set('curMode', dir);
     this.router.navigate(["/"]);
+    const index = this.appState.state.channels.findIndex(x => x.id === dir.channelId);
+    this.socket.emit('setChannel', this.appState.state.channels[index]);
   }
 }

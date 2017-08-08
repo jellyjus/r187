@@ -45,18 +45,30 @@ class Server {
 
             socket.on('setId', (id) => {
                 if (typeof id !== 'number') {
-                    return new Error('Error on set socket id')
+                    return console.log('Error on set socket id')
                 }
                 console.log('Change socket id to', id);
 
                 socket._id = id;
             });
 
+            socket.on('setChannel', (channel) => {
+                console.log('Change channel to', channel);
+
+                socket.channel = channel;
+            });
+
             socket.on('sendMessage', (data) => {
                 const target = utils.getSocketById(data.id, this.io.sockets.connected);
-                if (target) {
-                    target.emit('newMessage', data)
-                }
+                if (!target)
+                    return console.log('Error on sendMessage. Target not found');
+                if (!target.channel)
+                    return console.log('Error on sendMessage. Target channel not found');
+
+                if (target.channel.mode !== socket.channel.mode || target.channel.frequency !== socket.channel.frequency)
+                    return console.log('Error on sendMessage. Invalid channel settings');
+
+                target.emit('newMessage', data)
             });
         });
     }

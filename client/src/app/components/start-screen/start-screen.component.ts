@@ -39,7 +39,6 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     this.channels = this.state.channels;
     this.curMode = this.appState.storage.get('curMode');
     this.urlParams = this.route.snapshot.params;
-    console.log(this.curMode);
     if (this.curMode) {
       this.chName = this.curMode.name;
       this.dirName = this.getChName(this.curMode.channelId);

@@ -47,7 +47,7 @@ export class CreateChannelComponent implements OnInit {
         name: this.name,
         mode: this.mode,
         frequency: this.frequency,
-        id: +new Date()
+        id: +new Date() + ''
       }
     );
     this.router.navigate([this.path])

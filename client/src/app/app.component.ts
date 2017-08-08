@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppState } from './app.service';
 import { SocketService } from './services/socket.service';
 import { Subject } from 'rxjs';
+import { randomInt } from './utils/index';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,8 @@ export class AppComponent implements OnInit{
     this.appState.set('channels',this.appState.storage.get('channels'));
     this.appState.set('directions',this.appState.storage.get('directions'));
     this.appState.set('ssi',this.appState.storage.get('ssi'));
+    if (!this.appState.state.ssi)
+      this.appState.storage.set('ssi', randomInt(1, 256));
     this.socketService.init(this.appState.state.ssi);
   }
 
