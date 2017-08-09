@@ -35,6 +35,11 @@ export class AppState {
       data.splice(idx, 1);
       this.storage.set(key, data);
     },
+    update: (key, obj, idx) => {
+      const data = JSON.parse(window.localStorage.getItem(key));
+      data.splice(idx, 1, obj);
+      this.storage.set(key, data);
+    },
     push: (key, object) => {
       const data = JSON.parse(window.localStorage.getItem(key));
       if (!data) {

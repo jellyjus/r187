@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AppState} from '../../../app.service';
 import {Router} from '@angular/router';
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'messages',
@@ -27,17 +28,37 @@ export class MessagesComponent implements OnInit {
     {
       name: 'Отправить',
       action: this.sendMessage.bind(this),
-      icon: "fa-arrow-up"
+      icon: "fa-arrow-up",
+      disable: true,
+      cssClass: 'menuDisable'
+    },
+    {
+      name: 'Просмотр',
+      action: this.showMessage.bind(this),
+      icon: "fa-eye",
+      disable: true,
+      cssClass: 'menuDisable'
+    },
+    {
+      name: 'Редактировать',
+      action: this.editMessage.bind(this),
+      icon: "fa-pencil",
+      disable: true,
+      cssClass: 'menuDisable'
     },
     {
       name: 'Добавить',
       action: this.addMessage.bind(this),
-      icon: "fa-plus"
+      icon: "fa-plus",
+      disable: false,
+      cssClass: ''
     },
     {
       name: 'Удалить',
       action: this.deleteMessage.bind(this),
-      icon: "fa-trash"
+      icon: "fa-trash",
+      disable: true,
+      cssClass: 'menuDisable'
     }
   ];
 
@@ -45,6 +66,7 @@ export class MessagesComponent implements OnInit {
     const index = this.router.url.lastIndexOf('/');
     this.path = `..${this.router.url.slice(0, index)}`;
     this.state = this.appState.state;
+    this.state.messages && this.state.messages[length] ? this.currentMessage = 0 : this.currentMessage = undefined;
     this.appState.set('footerButtons', {
       left: {
         text: 'Меню',
@@ -83,9 +105,58 @@ export class MessagesComponent implements OnInit {
     });
   }
 
+  showMessage() {
+    this.subMenuTrigger = !this.subMenuTrigger;
+    this.mode = 'show';
+    this.message = this.state.messages[this.currentMessage];
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Отправить',
+        func: this.sendMessage.bind(this)
+      },
+      right: {
+        text: 'Назад',
+        func: this.changeMode.bind(this)
+      }
+    });
+  }
+
+  editMessage() {
+    this.mode = 'edit';
+    this.message = this.state.messages[this.currentMessage];
+    console.log(this.message);
+    this.subMenuTrigger = !this.subMenuTrigger;
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Сохранить',
+        func: this.updateMessage.bind(this)
+      },
+      right: {
+        text: 'Назад',
+        func: this.changeMode.bind(this)
+      }
+    });
+  }
+
+  updateMessage() {
+    this.appState.storage.update('messages', this.message, this.currentMessage);
+    this.mode = null;
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Меню',
+        func: this.triggerSubMenu.bind(this)
+      },
+      right: {
+        text: 'Назад',
+        route: this.path
+      }
+    });
+  }
+
   saveMessage() {
     this.appState.storage.push('messages', this.message);
     this.mode = null;
+    this.state.messages[length] ? this.currentMessage = 0 : this.currentMessage = undefined;
     this.appState.set('footerButtons', {
       left: {
         text: 'Меню',
@@ -102,8 +173,9 @@ export class MessagesComponent implements OnInit {
     this.router.navigate(['/start-screen', {message: this.state.messages[this.currentMessage]}])
   }
 
-  deleteMessage(curMsg) {
-    this.appState.storage.delete("messages", curMsg);
+  deleteMessage() {
+    this.appState.storage.delete("messages", this.currentMessage);
+    this.triggerSubMenu();
   }
 
   changeMode() {
@@ -126,6 +198,18 @@ export class MessagesComponent implements OnInit {
 
   triggerSubMenu() {
     this.subMenuTrigger = !this.subMenuTrigger;
+    this.state.messages[length] ? this.currentMessage = 0 : this.currentMessage = undefined;
+
+    this.menuItems.forEach((item) => {
+      if(!this.state.messages[length] && item.name != 'Добавить') {
+        item.disable = true;
+        item.cssClass = 'menuDisable'
+      } else {
+        item.disable = false;
+        item.cssClass = '';
+      }
+    });
+
     if (this.subMenuTrigger) {
       this.appState.set('footerButtons', {
         left: {

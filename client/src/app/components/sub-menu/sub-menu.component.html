@@ -1,5 +1,5 @@
 <ul class="menu">
-  <li *ngFor="let menuItem of menuItems" (click)="menuItem.action()">
+  <li *ngFor="let menuItem of menuItems" (click)="!menuItem.disable ? menuItem.action() : null" [ngClass]="{'menuDisable':menuItem.disable}">
     <span class="fa" ngClass={{menuItem.icon}}></span>
     {{menuItem.name}}
   </li>

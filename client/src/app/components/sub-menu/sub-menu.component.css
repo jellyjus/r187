@@ -17,3 +17,11 @@
 .icon {
   background-color: #a6a0a6;
 }
+
+.menuDisable {
+  color: #5e5e5e;
+}
+
+.menuDisable:hover {
+  color: #5e5e5e;
+}
