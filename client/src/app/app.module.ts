@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
 import { AppState } from './app.service';
+
 import { SocketService } from './services/socket.service';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import { DisplayComponent } from './components/display/display.component';
 import { FooterButtonsComponent } from './components/footer-buttons/footer-buttons.component';
 import { StartScreenComponent } from './components/start-screen/start-screen.component';
@@ -55,8 +58,10 @@ import { PhoneComponent } from './components/start-screen/phone/phone.component'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     routing,
-    FormsModule
+    FormsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [AppState, SocketService],
   bootstrap: [AppComponent]

@@ -45,7 +45,8 @@ class Server {
 
             socket.on('setId', (id) => {
                 if (typeof id !== 'number') {
-                    return console.log('Error on set socket id')
+                    const msg = 'Неправильный SSI';
+                    return socket.error(msg)
                 }
                 console.log('Change socket id to', id);
 
@@ -59,16 +60,23 @@ class Server {
             });
 
             socket.on('sendMessage', (data) => {
-                const target = utils.getSocketById(data.id, this.io.sockets.connected);
-                if (!target)
-                    return console.log('Error on sendMessage. Target not found');
-                if (!target.channel)
-                    return console.log('Error on sendMessage. Target channel not found');
+                    let target = null;
+                    const sockets = this.io.sockets.connected;
+                    for (let key in sockets) {
+                        if (
+                            sockets[key]._id === data.id &&
+                            sockets[key].channel &&
+                            sockets[key].channel.mode === socket.channel.mode &&
+                            sockets[key].channel.frequency === socket.channel.frequency
+                        )
+                            target = sockets[key];
+                    }
+                    if (!target) {
+                        const msg = 'Получателя с таким SSI в Вашем канале не существует';
+                        return socket.error(msg)
+                    }
 
-                if (target.channel.mode !== socket.channel.mode || target.channel.frequency !== socket.channel.frequency)
-                    return console.log('Error on sendMessage. Invalid channel settings');
-
-                target.emit('newMessage', data)
+                    target.emit('newMessage', data)
             });
         });
     }
