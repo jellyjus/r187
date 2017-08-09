@@ -23,10 +23,12 @@ export class AppComponent implements OnInit{
   initState() {
     this.appState.set('button', new Subject<any>());
     this.appState.set('messages',this.appState.storage.get('messages'));
+    this.appState.set('recvMsgs',this.appState.storage.get('recvMsgs'));
     this.appState.set('channels',this.appState.storage.get('channels'));
     this.appState.set('directions',this.appState.storage.get('directions'));
     this.appState.set('curMode',this.appState.storage.get('curMode'));
     this.appState.set('ssi',this.appState.storage.get('ssi'));
+    this.appState.set('notifications', []);
     console.log(this.appState.state);
     if (!this.appState.state.ssi)
       this.appState.storage.set('ssi', randomInt(1, 256));

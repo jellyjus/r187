@@ -4,7 +4,7 @@
     <span class="seconds">{{seconds}}</span>
   </div>
   <ul class="bars col-xs-6">
-    <li *ngFor="let tool of tools"><i class="fa" ngClass={{tool.icon}}></i></li>
+    <li *ngFor="let item of state.notifications"><i class="fa" ngClass={{item.icon}}></i></li>
   </ul>
 </div>
 <div class="row">

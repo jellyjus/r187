@@ -25,3 +25,13 @@ export const randomInt = (min, max) => {
   return rand;
 };
 
+export const notifications = {
+  push: (state, data) => {
+    if (state.findIndex(x => x.type === data.type) === -1) {
+      state.push(data)
+    }
+  },
+  delete: () => {
+
+  }
+};

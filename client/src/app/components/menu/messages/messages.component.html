@@ -11,11 +11,11 @@
   </ul>
 
   <div class="messages add-message" *ngIf="mode === 'add'">
-    <textarea [(ngModel)]="message" class="add-msg-area"></textarea>
+    <textarea [(ngModel)]="message" class="add-msg-area" autofocus ></textarea>
   </div>
 
   <div class="messages add-message" *ngIf="mode === 'edit'">
-    <textarea [(ngModel)]="message" class="add-msg-area">{{state.messages[currentMessage]}}</textarea>
+    <textarea [(ngModel)]="message" class="add-msg-area" autofocus >{{state.messages[currentMessage]}}</textarea>
   </div>
 
   <div class="messages add-message" *ngIf="mode === 'show'">

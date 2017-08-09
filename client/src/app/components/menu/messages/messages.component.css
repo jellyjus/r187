@@ -42,6 +42,10 @@
   background-color: #faf2cc;
 }
 
+.add-msg-area:focus {
+  outline: none;
+}
+
 .readonly {
   -webkit-user-select: none;
   -moz-user-select: none;

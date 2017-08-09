@@ -16,26 +16,15 @@ export class ToolbarComponent implements OnInit {
   curMode;
   state;
   channels;
+  notifications;
 
 
-  constructor(private appState: AppState) {
-
-  }
+  constructor(private appState: AppState) {}
 
   ngOnInit() {
     this.state = this.appState.state;
     this.channels = this.state.channels;
     this.ssi = this.state.ssi || " ";
-    this.tools = [
-      {
-        type : 'gps',
-        icon : 'fa-rocket'
-      },
-      {
-        type : 'gps',
-        icon : 'fa-rocket'
-      }
-    ];
 
     this.curMode = this.appState.storage.get('curMode');
     if (this.curMode) {

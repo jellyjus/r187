@@ -38,7 +38,8 @@ export class PhoneComponent implements OnInit {
     this.socket.emit('sendMessage', {
       id: this.phoneNumber,
       message: this.route.snapshot.params.message
-    })
+    });
+    this.router.navigate(['/'])
   }
 
   ngOnDestroy() {

@@ -14,13 +14,18 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   icon = 'fa-envelope';
 
   items;
+  state;
 
-  constructor(private appState: AppState, private router: Router) {}
+  constructor(
+    private appState: AppState,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.state = this.appState.state;
     const index = this.router.url.lastIndexOf('/');
     const path = `..${this.router.url.slice(0, index)}`;
-    this.items = this.appState.storage.get("recvMsgs").reverse();
+    this.items =  this.state.recvMsgs ? this.state.recvMsgs.reverse(): [];
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',

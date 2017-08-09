@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AppState} from '../../../app.service';
 import {Router} from '@angular/router';
-import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'messages',
@@ -66,7 +65,7 @@ export class MessagesComponent implements OnInit {
     const index = this.router.url.lastIndexOf('/');
     this.path = `..${this.router.url.slice(0, index)}`;
     this.state = this.appState.state;
-    this.state.messages && this.state.messages[length] ? this.currentMessage = 0 : this.currentMessage = undefined;
+    this.state.messages ? this.currentMessage = 0 : this.currentMessage = undefined;
     this.appState.set('footerButtons', {
       left: {
         text: 'Меню',
@@ -124,7 +123,6 @@ export class MessagesComponent implements OnInit {
   editMessage() {
     this.mode = 'edit';
     this.message = this.state.messages[this.currentMessage];
-    console.log(this.message);
     this.subMenuTrigger = !this.subMenuTrigger;
     this.appState.set('footerButtons', {
       left: {
@@ -156,7 +154,7 @@ export class MessagesComponent implements OnInit {
   saveMessage() {
     this.appState.storage.push('messages', this.message);
     this.mode = null;
-    this.state.messages[length] ? this.currentMessage = 0 : this.currentMessage = undefined;
+    this.state.messages ? this.currentMessage = 0 : this.currentMessage = undefined;
     this.appState.set('footerButtons', {
       left: {
         text: 'Меню',
@@ -198,10 +196,10 @@ export class MessagesComponent implements OnInit {
 
   triggerSubMenu() {
     this.subMenuTrigger = !this.subMenuTrigger;
-    this.state.messages[length] ? this.currentMessage = 0 : this.currentMessage = undefined;
+    !this.state.messages || !this.state.messages.length ? this.currentMessage = undefined : null;
 
     this.menuItems.forEach((item) => {
-      if(!this.state.messages[length] && item.name != 'Добавить') {
+      if(this.currentMessage === undefined && item.name != 'Добавить') {
         item.disable = true;
         item.cssClass = 'menuDisable'
       } else {

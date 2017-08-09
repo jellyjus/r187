@@ -21,7 +21,7 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
   dirName;
   channels;
   date;
-  urlParams;
+  urlParams = {};
 
   subscription;
   startScreen = {
@@ -38,7 +38,7 @@ export class StartScreenComponent implements OnInit, OnDestroy  {
     this.state = this.appState.state;
     this.channels = this.state.channels;
     this.curMode = this.appState.storage.get('curMode');
-    this.urlParams = this.route.snapshot.params;
+    this.route.params.subscribe(data => this.urlParams = data);
     if (this.curMode) {
       this.chName = this.curMode.name;
       this.dirName = this.getChName(this.curMode.channelId);

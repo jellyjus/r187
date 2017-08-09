@@ -3,6 +3,7 @@ import { NotificationsService } from 'angular2-notifications';
 import * as io from 'socket.io-client';
 import * as serverConfig from '../../../../server-config.json';
 import {AppState} from '../app.service'
+import { notifications } from '../utils/index'
 
 @Injectable()
 export class SocketService {
@@ -36,6 +37,8 @@ export class SocketService {
       console.log('newMessage', data);
       data.date = new Date().toLocaleString();
       this.appState.storage.push('recvMsgs', data);
+      notifications.push(this.state.notifications,{type: 'newMessage', icon: 'fa-envelope'})
+      console.log(this.state.notifications)
     });
 
     this.socket.on('error', message => {
