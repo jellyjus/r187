@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit, OnDestroy  {
     {
       name: 'Шумоподавитель',
       icon: 'fa-cogs',
-      route: null,
+      route: '/rtc',
     },
     {
       name: 'Навигация',

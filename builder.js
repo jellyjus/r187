@@ -1,14 +1,21 @@
-var NwBuilder = require('nw-builder');
-var nw = new NwBuilder({
-    files: './client/dist/**',
-    platforms: ['win64'],
-    version: '0.14.6'
-});
+"use strict"
 
-nw.on('log',  console.log);
+const builder = require("electron-builder");
+const Platform = builder.Platform;
 
-nw.build().then(function () {
-    console.log('all done!');
-}).catch(function (error) {
-    console.error(error);
-});
+
+builder.build({
+    targets: Platform.WINDOWS.createTarget(),
+    config: {
+        directories: {
+            buildResources: './client/build/',
+            output: 'electron-build'
+        }
+    }
+})
+    .then(() => {
+        console.log('COMPLETE')
+    })
+    .catch((error) => {
+        console.log('error', error)
+    });

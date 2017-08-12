@@ -5,10 +5,12 @@
   "main": "index.html",
   "author": "",
   "devDependencies": {
-    "nw-builder": "^3.4.1"
+    "nw-builder": "^3.4.1",
+    "electron-builder": "^19.19.1"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "easyrtc": "^1.1.0",
     "express": "^4.15.3",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3"

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AppState} from '../../../app.service';
 import {Router} from '@angular/router';
+import { notifications } from '../../../utils/index';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
     this.state = this.appState.state;
     const index = this.router.url.lastIndexOf('/');
     const path = `..${this.router.url.slice(0, index)}`;
-    this.items =  this.state.recvMsgs ? this.state.recvMsgs.reverse(): [];
+    this.items =  this.state.recvMsgs;
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
@@ -36,10 +37,10 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
         route: path
       }
     });
+    notifications.delete(this.state.notifications, 'newMessage')
   }
 
   ngOnDestroy() {
-
   }
 
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpModule} from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { DmoModeComponent } from './components/menu/services/data-editor/work-mo
 import { MessagesComponent } from './components/menu/messages/messages.component';
 import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
 import { PhoneComponent } from './components/start-screen/phone/phone.component';
+import { RTCComponent } from './components/rtc/rtc.component';
 
 
 @NgModule({
@@ -54,11 +56,13 @@ import { PhoneComponent } from './components/start-screen/phone/phone.component'
     DmoModeComponent,
     MessagesComponent,
     SubMenuComponent,
-    PhoneComponent
+    PhoneComponent,
+    RTCComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
     routing,
     FormsModule,
     SimpleNotificationsModule.forRoot()

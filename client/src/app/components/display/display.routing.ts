@@ -2,6 +2,7 @@ import { StartScreenComponent } from '../start-screen/start-screen.component';
 import { MenuComponent } from '../menu/menu.component';
 import { RecvMessagesComponent } from '../menu/recv-messages/recv-messages.component';
 import { MessagesComponent } from '../menu/messages/messages.component';
+import { RTCComponent } from '../rtc/rtc.component';
 import { ServicesComponent } from '../menu/services/services.component';
 import { DataEditorComponent } from '../menu/services/data-editor/data-editor.component';
 import { ChannelsComponent } from '../menu/services/data-editor/channels/channels.component';
@@ -22,6 +23,7 @@ export const routes: Routes = [
     children: [
       {path: '', component: MenuComponent},
       {path: 'messages', component: MessagesComponent},
+      {path: 'rtc', component: RTCComponent},
       {
         path: 'services',
         children: [

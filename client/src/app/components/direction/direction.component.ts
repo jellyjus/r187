@@ -58,7 +58,7 @@ export class DirectionComponent implements OnInit {
   changeCurMode(dir) {
     this.appState.storage.set('curMode', dir);
     this.router.navigate(["/"]);
-    const index = this.appState.state.channels.findIndex(x => x.id === dir.channelId);
-    this.socket.emit('setChannel', this.appState.state.channels[index]);
+    const index = this.state.channels.findIndex(x => x.id === dir.channelId);
+    this.socket.emit('setChannel', this.state.channels[index]);
   }
 }

@@ -1,4 +1,5 @@
 const express = require('express');
+const easyrtc = require("easyrtc");
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const utils = require('./utils/index');
@@ -17,11 +18,12 @@ class Server {
         this.createRoutes();
         this.createServer();
         this.createSockets();
+        this.createRTC();
     }
 
     createRoutes() {
         this.app.get('**', (req, res) => {
-            res.sendFile(__dirname + '/client/build/index1.html');
+            res.sendFile(__dirname + '/client/build/index.html');
         });
     }
 
@@ -54,7 +56,17 @@ class Server {
             });
 
             socket.on('setChannel', (channel) => {
+                if (!channel){
+                    const msg = `Error on setChannel: ${channel}`;
+                    return socket.error(msg)
+                }
+
                 console.log('Change channel to', channel);
+
+                const room = `${channel.mode}-${channel.frequency}`;
+                socket.join(room);
+                socket._rooms.push(room);
+                //this.io.to(room).emit('newMessage', {id: 123, msg: 'hello'})
 
                 socket.channel = channel;
             });
@@ -75,12 +87,25 @@ class Server {
                         const msg = 'Получателя с таким SSI в Вашем канале не существует';
                         return socket.error(msg)
                     }
-
                     target.emit('newMessage', data)
             });
         });
     }
 
+    createRTC() {
+        easyrtc.events.on("roomJoin", function(connectionObj, roomName, roomParameter, callback) {
+            console.log("["+connectionObj.getEasyrtcid()+"] Credential retrieved!", connectionObj.getFieldValueSync("credential"));
+            easyrtc.events.defaultListeners.roomJoin(connectionObj, roomName, roomParameter, callback);
+        });
+
+        this.easyrtcServer = easyrtc.listen(this.app, this.io, null, (err, rtcRef) => {
+            rtcRef.events.on("roomCreate", function(appObj, creatorConnectionObj, roomName, roomOptions, callback) {
+                console.log("roomCreate fired! Trying to create: " + roomName);
+
+                appObj.events.defaultListeners.roomCreate(appObj, creatorConnectionObj, roomName, roomOptions, callback);
+            });
+        });
+    }
 }
 
 module.exports = new Server;

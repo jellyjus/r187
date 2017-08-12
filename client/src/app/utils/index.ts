@@ -28,10 +28,16 @@ export const randomInt = (min, max) => {
 export const notifications = {
   push: (state, data) => {
     if (state.findIndex(x => x.type === data.type) === -1) {
-      state.push(data)
+      state.push(data);
+      const audio = new Audio('../../assets/notification.mp3');
+      audio.load();
+      audio.play();
     }
   },
-  delete: () => {
-
+  delete: (state, type) => {
+    const index = state.findIndex(x => x.type === type);
+    if (index !== -1) {
+      state.splice(index, 1)
+    }
   }
 };
