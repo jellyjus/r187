@@ -3,10 +3,16 @@
     <toolbar></toolbar>
   </div>
   <header-menu [name]='menuName' [icon]='icon'></header-menu>
-  <ul class="recv-messages col-xs-12">
-    <li *ngFor="let item of items; let i = index">
-      <p class="recv-msg-title">{{item.message}}</p>
+  <ul class="recv-messages col-xs-12" *ngIf="!mode">
+    <li *ngFor="let item of state.recvMsgs; let i = index" (click)="currentMessage = i" [ngClass]="{'current-message': currentMessage == i}">
+      <p class="recv-msg-title">{{item.message.length > 60 ? item.message.substr(0,60) + "..." : item.message}}<span *ngIf="!item.isRead" class="fa fa-envelope"></span></p>
       <span class="recv-msg-date">{{item.date}}</span>
     </li>
   </ul>
+
+  <div class="messages add-message" *ngIf="mode === 'show'">
+    <p class="add-msg-area">{{state.recvMsgs[currentMessage].message}}</p>
+  </div>
+
+  <sub-menu [menuItems]="menuItems" *ngIf="subMenuTrigger"></sub-menu>
 </div>

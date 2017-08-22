@@ -87,6 +87,7 @@ class Server {
                         const msg = 'Получателя с таким SSI в Вашем канале не существует';
                         return socket.error(msg)
                     }
+                    console.log("llf", target._id);
                     target.emit('newMessage', data)
             });
         });

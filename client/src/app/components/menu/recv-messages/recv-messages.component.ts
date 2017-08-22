@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AppState} from '../../../app.service';
 import {Router} from '@angular/router';
 import { notifications } from '../../../utils/index';
+import {falseIfMissing} from "protractor/built/util";
 
 
 @Component({
@@ -13,9 +14,25 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
 
   menuName = 'Принятые сообщения';
   icon = 'fa-envelope';
-
-  items;
   state;
+  message;
+  path;
+  flag = false;
+  mode = null;
+  currentMessage;
+  subMenuTrigger = false;
+  menuItems = [
+    {
+      name: 'Просмотр',
+      action: this.showMessage.bind(this),
+      icon: "fa-eye"
+    },
+    {
+      name: 'Удалить',
+      action: this.deleteMessage.bind(this),
+      icon: "fa-trash"
+    }
+  ];
 
   constructor(
     private appState: AppState,
@@ -25,22 +42,93 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.state = this.appState.state;
     const index = this.router.url.lastIndexOf('/');
-    const path = `..${this.router.url.slice(0, index)}`;
-    this.items =  this.state.recvMsgs;
+    this.path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
-        text: 'Выбрать',
-        route: null
+        text: 'Меню',
+        func: this.triggerSubMenu.bind(this)
       },
       right: {
         text: 'Назад',
-        route: path
+        route: this.path
       }
     });
-    notifications.delete(this.state.notifications, 'newMessage')
+    if(this.flag) notifications.delete(this.state.notifications, 'newMessage');
   }
 
   ngOnDestroy() {
+  }
+
+  showMessage() {
+    this.subMenuTrigger = !this.subMenuTrigger;
+    this.mode = 'show';
+    this.message = this.state.recvMsgs[this.currentMessage];
+    this.message.isRead = true;
+    this.appState.storage.update("recvMsgs", this.message, this.currentMessage);
+    this.flag = this.state.recvMsgs.every((item) => {
+      return item.isRead;
+    });
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Удалить',
+        func: this.deleteMessage.bind(this)
+      },
+      right: {
+        text: 'Назад',
+        func: this.changeMode.bind(this),
+      }
+    });
+  }
+
+  deleteMessage() {
+    this.appState.storage.delete("recvMsgs", this.currentMessage);
+    this.triggerSubMenu();
+  }
+
+  changeMode() {
+    if(this.mode)
+      this.mode = null;
+    else
+      this.mode = "show";
+    this.appState.set('footerButtons', {
+      left: {
+        text: 'Выбрать',
+        func: this.triggerSubMenu.bind(this)
+      },
+      right: {
+        text: 'Назад',
+        route: this.path
+      }
+    });
+  }
+
+  triggerSubMenu() {
+    this.subMenuTrigger = !this.subMenuTrigger;
+    !this.state.recvMsgs || !this.state.recvMsgs.length ? this.currentMessage = undefined : null;
+
+    if (this.subMenuTrigger) {
+      this.appState.set('footerButtons', {
+        left: {
+          text: 'Выбрать'
+        },
+        right: {
+          text: 'Назад',
+          func: this.triggerSubMenu.bind(this)
+        }
+      });
+    }
+    else {
+      this.appState.set('footerButtons', {
+        left: {
+          text: 'Меню',
+          func: this.triggerSubMenu.bind(this)
+        },
+        right: {
+          text: 'Назад',
+          route: this.path
+        }
+      });
+    }
   }
 
 }

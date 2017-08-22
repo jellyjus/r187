@@ -17,12 +17,37 @@
   justify-content: flex-start;
   height: 80%;
   overflow-y: auto;
+  padding: 0;
+}
+
+.recv-msg-title {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .recv-messages li {
-  padding: 10px 0;
+  padding: 10px 10px;
 }
 
 .recv-messages li:hover {
   cursor: pointer;
+}
+
+.current-message {
+  background-color: black;
+  color: white;
+}
+
+.add-message{
+  height: 90%;
+  resize: none;
+  border: none;
+  padding: 5px;
+  background-color: #faf2cc;
+  flex: 1;
+}
+
+.add-msg-area:focus {
+  outline: none;
 }

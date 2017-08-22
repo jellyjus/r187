@@ -34,8 +34,8 @@ export class SocketService {
     }
 
     this.socket.on('newMessage', (data) => {
-      console.log('newMessage', data);
       data.date = new Date().toLocaleString();
+      data.isRead = false;
       this.appState.storage.push('recvMsgs', data);
       notifications.push(this.state.notifications,{type: 'newMessage', icon: 'fa-envelope'})
     });
