@@ -42,6 +42,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.state = this.appState.state;
     const index = this.router.url.lastIndexOf('/');
+    this.state.recvMsgs ? this.currentMessage = 0 : this.currentMessage = undefined;
     this.path = `..${this.router.url.slice(0, index)}`;
     this.appState.set('footerButtons', {
       left: {
@@ -53,7 +54,6 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
         route: this.path
       }
     });
-    if(this.flag) notifications.delete(this.state.notifications, 'newMessage');
   }
 
   ngOnDestroy() {
@@ -68,6 +68,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
     this.flag = this.state.recvMsgs.every((item) => {
       return item.isRead;
     });
+    if(this.flag) notifications.delete(this.state.notifications, 'newMessage');
     this.appState.set('footerButtons', {
       left: {
         text: 'Удалить',
@@ -82,7 +83,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
 
   deleteMessage() {
     this.appState.storage.delete("recvMsgs", this.currentMessage);
-    this.triggerSubMenu();
+    this.changeMode();
   }
 
   changeMode() {
