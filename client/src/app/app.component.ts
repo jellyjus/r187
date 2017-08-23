@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.initState();
+    console.log("woo");
   }
 
   initState() {
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit{
 
     this.socketService.init();
   }
+
 
   button_push(button) {
     this.appState.button_push(button);

@@ -88,6 +88,8 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
 
   deleteMessageOnMenu() {
     this.appState.storage.delete("recvMsgs", this.currentMessage);
+    console.log(this.state.recvMsgs.length);
+    if (!this.state.recvMsgs.length) notifications.delete(this.state.notifications, 'newMessage');
     this.triggerSubMenu();
   }
 
