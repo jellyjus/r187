@@ -29,7 +29,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
     },
     {
       name: 'Удалить',
-      action: this.deleteMessage.bind(this),
+      action: this.deleteMessageOnMenu.bind(this),
       icon: "fa-trash"
     }
   ];
@@ -84,6 +84,11 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   deleteMessage() {
     this.appState.storage.delete("recvMsgs", this.currentMessage);
     this.changeMode();
+  }
+
+  deleteMessageOnMenu() {
+    this.appState.storage.delete("recvMsgs", this.currentMessage);
+    this.triggerSubMenu();
   }
 
   changeMode() {
