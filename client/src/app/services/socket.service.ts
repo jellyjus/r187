@@ -37,7 +37,7 @@ export class SocketService {
       data.date = new Date().toLocaleString();
       data.isRead = false;
       this.appState.storage.push('recvMsgs', data);
-      notifications.push(this.state.notifications,{type: 'newMessage', icon: 'fa-envelope'})
+      notifications.push(this.state.notifications, {type: 'newMessage', icon: 'fa-envelope'})
     });
 
     this.socket.on('error', message => {
@@ -48,5 +48,4 @@ export class SocketService {
       );
     })
   }
-
 }

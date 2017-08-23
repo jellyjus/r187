@@ -56,17 +56,15 @@ class Server {
             });
 
             socket.on('setChannel', (channel) => {
-                if (!channel){
-                    const msg = `Error on setChannel: ${channel}`;
-                    return socket.error(msg)
-                }
+                if (!channel)
+                    return socket.error(`Error on setChannel: ${channel}`);
 
                 console.log('Change channel to', channel);
 
-                const room = `${channel.mode}-${channel.frequency}`;
+                /*const room = `${channel.mode}-${channel.frequency}`;
                 socket.join(room);
                 socket._rooms.push(room);
-                //this.io.to(room).emit('newMessage', {id: 123, msg: 'hello'})
+                this.io.to(room).emit('newMessage', {id: 123, msg: 'hello'})*/
 
                 socket.channel = channel;
             });
@@ -83,11 +81,10 @@ class Server {
                         )
                             target = sockets[key];
                     }
-                    if (!target) {
-                        const msg = 'Получателя с таким SSI в Вашем канале не существует';
-                        return socket.error(msg)
-                    }
-                    console.log("llf", target._id);
+                    if (!target)
+                        return socket.error('Получателя с таким SSI в Вашем канале не существует');
+
+                    console.log("sendMessage", target._id, data);
                     target.emit('newMessage', data)
             });
         });
